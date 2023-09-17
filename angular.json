@@ -25,10 +25,15 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/public/css/materialize.min.css",
+              "src/public/css/icons.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/public/js/jquery-3.6.0.min.js",
+              "src/public/js/materialize.min.js",
+              "src/public/js/app.js"
+            ]
           },
           "configurations": {
             "production": {
