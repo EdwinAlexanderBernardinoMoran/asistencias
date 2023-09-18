@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'create-student'
+    redirectTo: 'home-student'
   },
 ]
 
