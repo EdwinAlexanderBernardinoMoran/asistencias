@@ -4,6 +4,7 @@ import { CreateDepartmentPageComponent } from './pages/create-department-page/cr
 import { EditDepartmentPageComponent } from './pages/edit-department-page/edit-department-page.component';
 import { HomeDepartmentPageComponent } from './pages/home-department-page/home-department-page.component';
 import { DepartmentRoutingModule } from './department-routing.module';
+import { TableDepartmentComponent } from './components/table-department/table-department.component';
 
 
 
@@ -11,11 +12,12 @@ import { DepartmentRoutingModule } from './department-routing.module';
   declarations: [
     CreateDepartmentPageComponent,
     EditDepartmentPageComponent,
-    HomeDepartmentPageComponent
+    HomeDepartmentPageComponent,
+    TableDepartmentComponent
   ],
   imports: [
     CommonModule,
-    DepartmentRoutingModule
+    DepartmentRoutingModule,
   ]
 })
 export class DepartmentModule { }
