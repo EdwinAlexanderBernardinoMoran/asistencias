@@ -1,4 +1,4 @@
-<div class="navbar-fixed">
+<!-- <div class="navbar-fixed">
   <ul id="alumnos" class="dropdown-content">
     <li><a routerLink="student/home-student">Listado</a></li>
     <li><a routerLink="student/create-student">Nuevo</a></li>
@@ -37,11 +37,11 @@
   </ul>
 
   <nav class="navbar blue darken-3">
-    <div class="nav-wrapper container">
-      <!-- <a href="#!" class="brand-logo right">
+    <div class="nav-wrapper container"> -->
+<!-- <a href="#!" class="brand-logo right">
         <img src="img/Logo_inso.jpg" alt="logo del inso" height="70px" class="circle z-depth-5" title="d">
       </a> -->
-      <ul class="left hide-on-med-and-down">
+<!-- <ul class="left hide-on-med-and-down">
         <li>
           <a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos
               <i class="material-icons right">arrow_drop_down</i>
@@ -74,4 +74,260 @@
       </ul>
     </div>
   </nav>
-</div>
+</div> -->
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+  <li>
+    <div class="user-view">
+      <div class="background"> <img src="public/img/background.jpg" alt="fondo"> </div>
+      <a href="#"><img class="circle" src="public/img/inso.jpg" alt="user" title="user"></a>
+      <a href="#"><span class="white-text name">Edwin Alexander</span></a>
+      <a href="#"><span class="white-text email">edwinalexander@gmail.com</span></a>
+    </div>
+  </li>
+  <li>
+    <ul class="collapsible collapsible-accordion">
+      <!-- #1 -->
+      <li class="bold">
+        <a class="collapsible-header waves-effect">
+          <i class="material-icons blue-text">account_circle</i> Alumnos
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">content_paste</i>
+                Listado
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">create</i>
+                Nuevo
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">chrome_reader_mode</i>
+                Codigo de barras
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <!-- #Profesores-->
+      <li class="bold">
+        <a class="collapsible-header waves-effect">
+          <i class="material-icons blue-text">people</i> Profesores
+        </a>
+        <div class="collapsible-body">
+          <ul>
+
+            <!-- Listado de Profesores -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">content_paste</i>
+                Listado
+              </a>
+            </li>
+
+            <!-- Agregar Profesor -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">create</i>
+                Agregar Profesor
+              </a>
+            </li>
+
+            <!-- Cargo de Profesores -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">assignment_ind</i>
+                Cargos Profesores
+              </a>
+            </li>
+
+            <!-- Categorias de Profesores -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">apps</i>
+                Categoria Profesor
+              </a>
+            </li>
+
+            <!-- Carrera de Profesores -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">bookmark</i>
+                Carrera Profesor
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <!-- #Matriculas -->
+      <li class="bold">
+        <a class="collapsible-header waves-effect">
+          <i class="material-icons blue-text">assignment</i> Matriculas
+        </a>
+        <div class="collapsible-body">
+          <ul>
+
+            <!-- Listado de Matriculas -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">content_paste</i>
+                Listado
+              </a>
+            </li>
+
+            <!-- Agregar Matricula -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">create</i>
+                Matricular
+              </a>
+            </li>
+
+            <!-- Registro de Matriculas -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">assignment</i>
+                Registros
+              </a>
+            </li>
+
+            <!-- Comprobante de Matriculas -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">check</i>
+                Compro matricula
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <!-- #Asistencias-->
+      <li class="bold">
+        <a class="collapsible-header waves-effect">
+          <i class="material-icons blue-text">assignment_turned_in</i> Asistencias
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">assignment_turned_in</i>
+                Asistencias
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <!-- #Mantenimientos-->
+      <li class="bold">
+        <a class="collapsible-header waves-effect">
+          <i class="material-icons blue-text">settings</i> Mantenimientos
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <!-- Departamentos -->
+            <li>
+              <a routerLink="department/home-department">
+                <i class="material-icons blue-text">content_copy</i>
+                Departamentos
+              </a>
+            </li>
+
+            <!-- Municipios -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">crop_portrait</i>
+                Municipios
+              </a>
+            </li>
+
+            <!-- Cantones -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">folder_open</i>
+                Cantones
+              </a>
+            </li>
+
+            <!-- Caserios -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">folder_open</i>
+                Caserios
+              </a>
+            </li>
+
+            <!-- Zonas -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">add</i>
+                Zonas
+              </a>
+            </li>
+
+            <!-- Nacionalidades -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">account_circle</i>
+                Nacionalidades
+              </a>
+            </li>
+
+            <!-- Especialidades -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">bookmark_border</i>
+                Especialidades
+              </a>
+            </li>
+
+            <!-- Secciones -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">toc</i>
+                Secciones
+              </a>
+            </li>
+
+            <!-- Centros Escolares -->
+            <li>
+              <a href="#!">
+                <i class="material-icons blue-text">account_balance</i>
+                Centros Escolares
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+    </ul>
+  </li>
+</ul>

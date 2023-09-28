@@ -22,6 +22,11 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/public/img/inso.ico",
+              "src/public/img/edwin.jpeg",
+              "src/public/img/inso.jpg",
+              "src/public/img/background.jpg",
+              "src/public/img/inso.png",
               "src/assets"
             ],
             "styles": [
