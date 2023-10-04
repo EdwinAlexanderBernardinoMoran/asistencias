@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
-import { Department, Links, SearchDepartment } from '../interfaces/department.interface';
+import { Observable } from 'rxjs';
+import { SearchDepartment } from '../interfaces/department.interface';
 
 @Injectable({providedIn: 'root'})
 export class DepartmentsServices {
@@ -10,7 +10,7 @@ export class DepartmentsServices {
   // public departmentsLinks!: Links;
   private apiUrl:string = 'http://backendinso.test/api/v1/department';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   // FUNCIONAL
   // obtenerDepartment():Observable<Department[]>{
@@ -20,7 +20,7 @@ export class DepartmentsServices {
   // }
 
   obtenerDepartment():Observable<SearchDepartment>{
-    return this.httpClient.get<SearchDepartment>(this.apiUrl)
+    return this.http.get<SearchDepartment>(this.apiUrl)
   }
 
 }

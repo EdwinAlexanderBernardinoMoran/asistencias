@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Student } from '../../interfaces/student.interfaces';
 
 @Component({
   selector: 'table-student',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-student.component.css']
 })
 export class TableStudentComponent {
-
+  @Input()
+  public students: Student[] = [];
 }
