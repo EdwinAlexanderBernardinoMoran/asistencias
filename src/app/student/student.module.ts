@@ -5,6 +5,7 @@ import { CreateStudentPageComponent } from './pages/create-student-page/create-s
 import { EditStudentPageComponent } from './pages/edit-student-page/edit-student-page.component';
 import { StudentRoutingModule } from './student-routing.module';
 import { TableStudentComponent } from './components/table-student/table-student.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -17,7 +18,8 @@ import { TableStudentComponent } from './components/table-student/table-student.
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    MaterialModule
   ]
 })
 export class studentModule { }

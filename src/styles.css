@@ -4,3 +4,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .spaces{
   flex: 1 1 auto;
 }
+
+table{
+  width: 400px !important;
+}
+
+.container{
+  margin: auto;
+  padding: 45px 0;
+  width: 100%;
+  max-width: 1200px;
+}

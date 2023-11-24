@@ -8,4 +8,45 @@
 <!-- <?php if($listaAlumnos->prev) echo Html::linkAction("index/$listaAlumnos->prev", '<< Anterior|', 'class="btn blue darken-3"') ?>
 <?php if($listaAlumnos->next) echo Html::linkAction("index/$listaAlumnos->next/", 'Próximo >>', 'class="btn red right"') ?> -->
 
-<h1>Pagina de estudiantes</h1>
+<div class="container">
+  <table [dataSource]="dataSource" mat-table class="mat-elevation-z15">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> NOMBRES </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> APELLIDOS </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nie">
+      <th mat-header-cell *matHeaderCellDef> NIE </th>
+      <td mat-cell *matCellDef="let element"> {{element.nie}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="especialidad">
+      <th mat-header-cell *matHeaderCellDef> ESPECIALIDAD </th>
+      <td mat-cell *matCellDef="let element"> {{element.especialidad}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
