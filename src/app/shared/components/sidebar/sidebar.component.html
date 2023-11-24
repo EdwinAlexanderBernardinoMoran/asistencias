@@ -1,4 +1,4 @@
-<div class="navbar-fixed">
+<!-- <div class="navbar-fixed">
   <ul id="alumnos" class="dropdown-content">
     <li><a routerLink="student/home-student">Listado</a></li>
     <li><a routerLink="student/create-student">Nuevo</a></li>
@@ -38,9 +38,9 @@
 
   <nav class="navbar blue darken-3">
     <div class="nav-wrapper container">
-      <!-- <a href="#!" class="brand-logo right">
+      <a href="#!" class="brand-logo right">
         <img src="img/Logo_inso.jpg" alt="logo del inso" height="70px" class="circle z-depth-5" title="d">
-      </a> -->
+      </a>
       <ul class="left hide-on-med-and-down">
         <li>
           <a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos
@@ -75,5 +75,65 @@
     </div>
   </nav>
 </div>
+
+ -->
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+    <mat-toolbar>
+      <span>Asistencias</span>
+      <span class="spaces"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListItemIcon fontIcon="account_circle">user</mat-icon>
+          Alumnos
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon matListItemIcon fontIcon="assignment_ind">user</mat-icon>
+          Profesores
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
+          Matriculas
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
+          Asistencias
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
+          Mantenimientos
+        </mat-list-item>
+      </mat-list>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spaces"></span>
+
+    <button mat-button>
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
+
 
 

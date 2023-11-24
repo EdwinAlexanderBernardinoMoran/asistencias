@@ -31,7 +31,9 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/public/css/icons.css",
+              "src/public/css/font-roboto.css"
             ],
             "scripts": [
             ]
