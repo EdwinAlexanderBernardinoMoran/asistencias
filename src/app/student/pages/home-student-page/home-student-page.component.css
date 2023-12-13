@@ -1,0 +1,23 @@
+.green{
+  background-color: greenyellow;
+}
+
+.mat-column-id {
+  text-align: center;
+}
+
+.mat-column-names {
+  text-align: center;
+}
+
+.mat-column-lastnames {
+  text-align: center;
+}
+
+.mat-column-incomeSpecialty {
+  text-align: center;
+}
+
+.mat-column-acciones {
+  text-align: center;
+}
