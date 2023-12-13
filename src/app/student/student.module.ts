@@ -6,6 +6,7 @@ import { EditStudentPageComponent } from './pages/edit-student-page/edit-student
 import { StudentRoutingModule } from './student-routing.module';
 import { TableStudentComponent } from './components/table-student/table-student.component';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     StudentRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class studentModule { }

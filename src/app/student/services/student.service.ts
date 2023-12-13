@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, delay } from 'rxjs';
 import { SearchStudent } from '../interfaces/student.interfaces';
 
 @Injectable({providedIn: 'root'})
@@ -11,6 +11,8 @@ export class StudentService {
   constructor(private http: HttpClient) { }
 
   getStudent(): Observable<SearchStudent>{
-    return this.http.get<SearchStudent>(this.apiUrl);
+    return this.http.get<SearchStudent>(this.apiUrl).pipe(
+      delay(1000)
+    );
   }
 }

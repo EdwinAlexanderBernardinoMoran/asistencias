@@ -76,6 +76,9 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[2, 4, 5, 6, 8]" aria-label="Select page of user"></mat-paginator>
+
+  <shared-loader *ngIf="isLoading"></shared-loader>
 </div>
+
 
 

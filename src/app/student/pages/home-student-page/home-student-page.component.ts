@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class HomeStudentPageComponent implements OnInit, AfterViewInit {
 
   public title:string = "Listado De Estudiantes";
-
+  public isLoading: boolean = false;
   public displayedColumns: string[] = ['id', 'names', 'lastnames', 'nie', 'incomeSpecialty', 'acciones'];
   public student: MatTableDataSource<Student>;
 
@@ -29,10 +29,12 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.homeStudent.getStudent().subscribe(
       (response: SearchStudent) => {
         this.student.data = response.data
         this.links = response.links;
+        this.isLoading = false;
       }
     )
   }
