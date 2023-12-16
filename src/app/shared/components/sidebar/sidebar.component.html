@@ -1,84 +1,5 @@
-<!-- <div class="navbar-fixed">
-  <ul id="alumnos" class="dropdown-content">
-    <li><a routerLink="student/home-student">Listado</a></li>
-    <li><a routerLink="student/create-student">Nuevo</a></li>
-    <li><a routerLink="student/student/1">Codigo De Barra</a></li>
-  </ul>
-
-  <ul id="profesores" class="dropdown-content">
-    <li><a href="#">Listado</a></li>
-    <li><a href="#">Nuevo</a></li>
-    <li><a href="#">Cargos Profesores</a></li>
-    <li><a href="#">Categoria Profesores</a></li>
-    <li><a href="#">Carrera Profesores</a></li>
-  </ul>
-
-  <ul id="matriculas" class="dropdown-content">
-    <li><a href="#">Listado</a></li>
-    <li><a href="#">Agregar</a></li>
-    <li><a href="#">Registros</a></li>
-    <li><a href="#">Comprobante De Matricula</a></li>
-  </ul>
-
-  <ul id="asistencias" class="dropdown-content">
-    <li><a href="#">Asistencia</a></li>
-  </ul>
-
-  <ul id="crud" class="dropdown-content">
-    <li><a href="#">Nacionalidad</a></li>
-    <li><a routerLink="department/home-department">Departamentos</a></li>
-    <li><a href="#">Municipios</a></li>
-    <li><a href="#">Cantones</a></li>
-    <li><a href="#">Caserios</a></li>
-    <li><a href="#">Zonas</a></li>
-    <li><a href="#">Centros Escolares</a></li>
-    <li><a routerLink="specialty-list">Especialidades</a></li>
-    <li><a href="#">Secciones</a></li>
-  </ul>
-
-  <nav class="navbar blue darken-3">
-    <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo right">
-        <img src="img/Logo_inso.jpg" alt="logo del inso" height="70px" class="circle z-depth-5" title="d">
-      </a>
-      <ul class="left hide-on-med-and-down">
-        <li>
-          <a href="#!" class="dropdown-trigger" data-target="alumnos">Alumnos
-              <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-
-        <li>
-          <a href="#!" class="dropdown-trigger" data-target="profesores">Profesores
-              <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-
-        <li>
-          <a href="#!" class="dropdown-trigger" data-target="matriculas">Matriculas
-              <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-
-        <li>
-          <a href="#!" class="dropdown-trigger" data-target="asistencias">Asistencia
-              <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-
-        <li>
-          <a href="#!" class="dropdown-trigger" data-target="crud">Mantenimientos
-            <i class="material-icons right">arrow_drop_down</i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
-
- -->
 <mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '275px'}">
     <mat-toolbar>
       <span>Asistencias</span>
       <span class="spaces"></span>
@@ -88,33 +9,32 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <mat-list>
-        <mat-list-item>
-          <mat-icon matListItemIcon fontIcon="account_circle">user</mat-icon>
-          Alumnos
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <mat-icon matListItemIcon fontIcon="assignment_ind">user</mat-icon>
-          Profesores
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
-          Matriculas
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
-          Asistencias
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <mat-icon matListItemIcon fontIcon="assignment">user</mat-icon>
-          Mantenimientos
-        </mat-list-item>
-      </mat-list>
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
 
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+          <mat-list-item [routerLink]="node.url">
+            <mat-icon matListItemIcon>{{node.icon}}</mat-icon>
+            <span style="font-size: 14px;">{{node.name}}</span>
+          </mat-list-item>
+        </mat-tree-node>
+
+        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+            <div class="mat-tree-node">
+              <button mat-icon-button matTreeNodeToggle
+                      [attr.aria-label]="'Toggle ' + node.name">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              {{node.name}}
+            </div>
+
+            <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+                role="group">
+              <ng-container matTreeNodeOutlet></ng-container>
+          </div>
+        </mat-nested-tree-node>
+      </mat-tree>
     </mat-nav-list>
   </mat-sidenav>
 
