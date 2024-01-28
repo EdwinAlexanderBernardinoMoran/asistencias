@@ -5,15 +5,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex: 1 1 auto;
 }
 
-table{
-  width: 400px !important;
-}
-
 .container{
   margin: auto;
   padding: 45px 0;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1650px;
+}
+
+.container-two{
+  margin: auto;
+  padding: 45px 0;
+  width: 100%;
+  max-width: 1650px;
 }
 
 .mat-mdc-form-field {
@@ -31,5 +34,10 @@ table{
 
 .s{
   font-size: 10px !important;
+}
+
+.mat-datepicker-content .mat-calendar {
+  width: 296px;
+  height: 384px !important;
 }
 

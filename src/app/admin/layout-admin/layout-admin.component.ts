@@ -13,7 +13,7 @@ const TREE_DATA: FoodNode[] = [
   // Alumnos
   {
     name: 'Alumnos',
-    children: [{name: 'Listado', url: 'student', icon: 'assignment_ind'}, {name: 'Nuevo', url: 'student/create-student', icon: 'person_add'}, {name: 'Codigo De Barras', url: '', icon: 'assessment'}],
+    children: [{name: 'Listado', url: './list', icon: 'assignment_ind'}, {name: 'Nuevo', url: './new-student', icon: 'person_add'}, {name: 'Codigo De Barras', url: '', icon: 'assessment'}],
   },
 
   // Matriculas
@@ -42,11 +42,12 @@ const TREE_DATA: FoodNode[] = [
 ];
 
 @Component({
-  selector: 'shared-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  selector: 'layout-admin',
+  templateUrl: './layout-admin.component.html',
+  styleUrls: ['./layout-admin.component.css']
+
 })
-export class SidebarComponent {
+export class LayoutAdminComponent {
 
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();

@@ -1,1 +1,314 @@
-<p>create-student-page works!</p>
+<div class="container-two">
+  <h1 align="center">{{title}}</h1>
+  <h2 align="center">{{ficha}} {{customDate | date:'yyyy'}}</h2>
+
+  <mat-tab-group>
+
+    <!-- Toolbar-one -->
+    <mat-tab label="Identificacion Del Estudiante">
+      <h2 class="mt-5">Informacion Del Estudiante:</h2>
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Nombres</mat-label>
+            <input type="text" matInput placeholder="Nombres">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input type="password" matInput placeholder="Apellidos">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field color="primary">
+            <mat-label>Fecha De Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Nacionalidad</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Salvadoreña</mat-option>
+              <!-- <mat-option value="option2" disabled>Option 2 (disabled)</mat-option> -->
+              <mat-option value="option3">Naturalizada</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Departamento De Nacimiento</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Sonsonate</mat-option>
+              <mat-option value="option1">Santa Ana</mat-option>
+              <mat-option value="option1">Ahuachapan</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Municipio De Nacimiento</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Sonsonate</mat-option>
+              <mat-option value="option1">Nahuizalco</mat-option>
+              <mat-option value="option1">Acajutla</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>assignment_ind</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Año De Bachillerato</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">1° Año</mat-option>
+              <mat-option value="option1">2° Año</mat-option>
+              <mat-option value="option1">3° Año</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>local_library</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>NIE</mat-label>
+            <input matInput #postalCode maxlength="10" placeholder="Ex. 8148921010">
+            <mat-hint align="end">{{postalCode.value.length}} / 10</mat-hint>
+            <mat-icon matSuffix>person_pin</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Numero De Partida De Nacimiento:</mat-label>
+            <input type="text" matInput placeholder="# Numero De Partida">
+            <mat-icon matSuffix>blur_on</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Numero De Folio De Nacimiento:</mat-label>
+            <input type="text" matInput placeholder="# Numero De Folio">
+            <mat-icon matSuffix>blur_on</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Libro De La Partida De Nacimiento:</mat-label>
+            <input type="text" matInput placeholder="# Numero De Libro">
+            <mat-icon matSuffix>blur_on</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Otro Documento De Identificacion</mat-label>
+            <input type="text" matInput placeholder="Otro Documento De Identificacion">
+            <mat-icon matSuffix>portrait</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Salvadoreña/o Por:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Nacimiento</mat-option>
+              <mat-option value="option1">Naturalizado</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Especialidad:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Tecnico Vocacional En Desarrollo De Software</mat-option>
+              <mat-option value="option1">Tecnico Vocacional Administrativo Contable</mat-option>
+              <mat-option value="option1">Tecnico Vocacional Atencion Primaria En Salud</mat-option>
+              <mat-option value="option1">Tecnico Vocacional Mantenimiento Automotriz</mat-option>
+              <mat-option value="option1">Bachillerato General</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>class</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Estudio Parvularia:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">SI</mat-option>
+              <mat-option value="option1">NO</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>content_paste</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Repite Grado:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">SI</mat-option>
+              <mat-option value="option1">NO</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>content_paste</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Centro De Procedencia:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Centro Escolar Canton Sabana San Juan Abajo</mat-option>
+              <mat-option value="option1">Centro Escolar Romero Alvergue</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>content_paste</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Año Que Estudio Anteriormente</mat-label>
+            <input type="text" matInput placeholder="Otro Documento De Identificacion">
+            <mat-icon matSuffix>blur_on</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <!-- Toolbar-two -->
+    <mat-tab label="Informacion Del Estudiante">
+      <!-- Informacion Del Estudiante -->
+      <h2 class="mt-5">Informacion Del Estudiante: </h2>
+      <div class="flex">
+        <!-- Tipo_De_Sangre -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Tipo De Sangre</mat-label>
+            <input type="text" matInput placeholder="Tipo De Sangre">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Sexo -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Sexo</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Masculino</mat-option>
+              <mat-option value="option3">Femenino</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Estado_Familiar -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Estado Familiar</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Casado</mat-option>
+              <mat-option value="option3">Viudo</mat-option>
+              <mat-option value="option3">Divorciado</mat-option>
+              <mat-option value="option3">Soltero</mat-option>
+              <mat-option value="option3">Acompañado</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Discapacidad -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Discapacidad:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Ceguera</mat-option>
+              <mat-option value="option3">Baja Vision</mat-option>
+              <mat-option value="option3">sordera</mat-option>
+              <mat-option value="option3">Hipoacusia</mat-option>
+              <mat-option value="option3">Sindrome De Down</mat-option>
+              <!-- <mat-option value="option3">Retardo Mental</mat-option>
+              <mat-option value="option3">Problemas Motores</mat-option>
+              <mat-option value="option3">Ausencia De Miembros</mat-option>
+              <mat-option value="option3">Autismo</mat-option> -->
+            </mat-select>
+            <mat-icon matSuffix>accessible</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Datos De Contactos -->
+      <h2 class="mt-5">Datos De Contacto: </h2>
+      <div class="flex">
+         <!-- Email -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </div>
+
+         <!-- Telefono -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Telefono</mat-label>
+            <input type="text" matInput placeholder="0000-0000">
+            <mat-icon matSuffix>call</mat-icon>
+          </mat-form-field>
+        </div>
+
+         <!-- Zonas -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Zonas:</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Rural</mat-option>
+              <mat-option value="option3">Urbana</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <!-- Toolbar-three -->
+    <mat-tab label="Identificacion Del Responsable">
+      <h3>Identificacion Del Responsable</h3>
+    </mat-tab>
+
+    <!-- Toolbar-four -->
+    <mat-tab label="Profesor Que Realizo La Matricula">
+      <h3>Profesor Que Realizo La Matricula</h3>
+    </mat-tab>
+  </mat-tab-group>
+</div>

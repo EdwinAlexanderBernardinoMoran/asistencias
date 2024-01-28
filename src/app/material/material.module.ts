@@ -20,6 +20,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTreeModule} from '@angular/material/tree';
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   exports: [
@@ -43,6 +47,10 @@ import { MatTreeModule} from '@angular/material/tree';
     MatTableModule,
     MatPaginatorModule,
     MatTreeModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ]
 })
 export class MaterialModule { }

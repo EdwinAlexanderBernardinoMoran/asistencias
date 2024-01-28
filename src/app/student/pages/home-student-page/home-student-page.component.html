@@ -1,13 +1,3 @@
-<!-- <div class="row">
-    <h4 class="center-align">IDENTIFICACION DEL ESTUDIANTE.</h4>
-    <a routerLink="student/create-student" class="btn green accent-4 spacing borde" title="Agregar Alumno">Crear Alumno +</a>
-</div> -->
-
-<!-- <table-student [students]="student"></table-student> -->
-
-<!-- <?php if($listaAlumnos->prev) echo Html::linkAction("index/$listaAlumnos->prev", '<< Anterior|', 'class="btn blue darken-3"') ?>
-<?php if($listaAlumnos->next) echo Html::linkAction("index/$listaAlumnos->next/", 'Próximo >>', 'class="btn red right"') ?> -->
-
 <div class="container">
 
   <div class="row">
@@ -16,10 +6,10 @@
 
   <mat-form-field>
     <mat-label>Busca por nombres, apellidos, nie y especialidad</mat-label>
-    <input matInput  placeholder="Ex. Mía" #input>
+    <input matInput  placeholder="Edwin Bernardino, 814892, Desarrollo De Software" #input>
   </mat-form-field>
 
-  <table [dataSource]="student" mat-table class="mat-elevation-z15">
+  <table [dataSource]="student" mat-table class="mat-elevation-z15 mt-5 p-3">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -27,37 +17,37 @@
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let element" class="p-3"> {{element.id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="names">
       <th mat-header-cell *matHeaderCellDef> NOMBRES </th>
-      <td mat-cell *matCellDef="let element"> {{element.names}} </td>
+      <td mat-cell *matCellDef="let element" class="p-3"> {{element.names}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="lastnames">
       <th mat-header-cell *matHeaderCellDef> APELLIDOS </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastnames}} </td>
+      <td mat-cell *matCellDef="let element" class="p-3"> {{element.lastnames}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="nie">
       <th mat-header-cell *matHeaderCellDef> NIE </th>
-      <td mat-cell *matCellDef="let element"> {{element.nie}} </td>
+      <td mat-cell *matCellDef="let element" class="p-3"> {{element.nie}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="incomeSpecialty">
       <th mat-header-cell *matHeaderCellDef> ESPECIALIDAD </th>
-      <td mat-cell *matCellDef="let element" justify="center"> {{element.incomeSpecialty}} </td>
+      <td mat-cell *matCellDef="let element" class="p-3" justify="center"> {{element.incomeSpecialty}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
-      <td mat-cell *matCellDef="let element">
+      <td mat-cell *matCellDef="let element" class="p-3">
         <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
           <mat-icon>edit</mat-icon>
         </button>
@@ -75,7 +65,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[2, 4, 5, 6, 8]" aria-label="Select page of user"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[20, 40, 60]" aria-label="Select page of user"></mat-paginator>
 
   <shared-loader *ngIf="isLoading"></shared-loader>
 </div>
