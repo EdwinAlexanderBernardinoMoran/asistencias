@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+
+export interface Hamlet{
+  id: number,
+  name: string,
+}
+
 @Component({
   selector: 'student-create-student-page',
   templateUrl: './create-student-page.component.html',
   styleUrls: ['./create-student-page.component.css'],
   // standalone: true,
 })
+
+
 export class CreateStudentPageComponent {
 
   public title:string = "Instituto Nacional De Sonzacate";
