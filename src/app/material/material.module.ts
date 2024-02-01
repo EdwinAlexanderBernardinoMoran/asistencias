@@ -23,7 +23,6 @@ import { MatTreeModule} from '@angular/material/tree';
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   exports: [
@@ -50,7 +49,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
   ]
 })
 export class MaterialModule { }

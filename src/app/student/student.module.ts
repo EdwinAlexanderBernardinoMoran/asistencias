@@ -7,6 +7,7 @@ import { TableStudentComponent } from './components/table-student/table-student.
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { StudentRoutingModule } from './student-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +20,7 @@ import { StudentRoutingModule } from './student-routing.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     StudentRoutingModule,
     MaterialModule,
     SharedModule

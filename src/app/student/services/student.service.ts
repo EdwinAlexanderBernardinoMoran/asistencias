@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, delay } from 'rxjs';
-import { SearchStudent } from '../interfaces/student.interfaces';
+import { Observable, catchError, delay, of } from 'rxjs';
+import { SearchStudent, Student } from '../interfaces/student.interfaces';
 
 @Injectable({providedIn: 'root'})
 export class StudentService {
@@ -14,5 +14,11 @@ export class StudentService {
     return this.http.get<SearchStudent>(this.apiUrl).pipe(
       delay(1000)
     );
+  }
+
+  getStudentById(id: string): Observable<Student | undefined>{
+    return this.http.get<Student>(`${this.apiUrl}/${id}`).pipe(
+      catchError(error => of(undefined))
+    )
   }
 }
