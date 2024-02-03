@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Student } from '../../interfaces/student.interfaces';
+import { Student } from '../../interfaces/student.interface';
 
 @Component({
   selector: 'table-student',

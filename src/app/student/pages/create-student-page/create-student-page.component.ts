@@ -1,5 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Nationality, SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
+import { StudentService } from '../../services/student.service';
+import { Department, SearchDepartment } from 'src/app/department/interfaces/department.interface';
+import { Municipality, SearchMunicipality } from 'src/app/municipality/interfaces/municipality.interface';
+import { SearchSection, Section } from 'src/app/section/interfaces/section.interface';
+import { SearchSpecialty, Specialty } from 'src/app/specialty/interfaces/specialty.interface';
+import { SchoolCenter, SearchSchoolCenter } from 'src/app/school-center/interfaces/school_center.interface';
+import { SearchZone, Zone } from 'src/app/zone/interfaces/zone.interface';
+import { Canton, SearchCanton } from 'src/app/canton/interfaces/canton.interface';
+import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
+import { SearchTeacher, Teacher } from 'src/app/teacher/interfaces/teacher.interface';
 
 export interface Hamlet{
   id: number,
@@ -14,7 +25,94 @@ export interface Hamlet{
 })
 
 
-export class CreateStudentPageComponent {
+export class CreateStudentPageComponent implements OnInit{
+
+  public nationalities: Nationality[] = [];
+  public departments: Department[] = [];
+  public municipalities: Municipality[] = [];
+  public sections: Section[] = [];
+  public specialties: Specialty[] = [];
+  public schoolcenters: SchoolCenter[] = [];
+  public zones: Zone[] = [];
+  public cantones: Canton[] = [];
+  public hamlets: Hamlet[] = [];
+  public teachers: Teacher[] = [];
+
+  constructor(private studentService: StudentService){}
+
+  ngOnInit(): void {
+
+    // Select Nationality
+    this.studentService.getNationalitySelect().subscribe(
+      (response: SearchNationality) => {
+        this.nationalities = response.data
+      }
+    )
+
+    // Select Department
+    this.studentService.getDepartmentSelect().subscribe(
+      (response: SearchDepartment) => {
+        this.departments = response.data
+      }
+    )
+
+    // Select Municipality
+    this.studentService.getMunicipalitySelect().subscribe(
+      (response: SearchMunicipality) => {
+        this.municipalities = response.data
+      }
+    )
+
+    // Select Sections
+    this.studentService.getSectionSelect().subscribe(
+      (response: SearchSection) => {
+        this.sections = response.data
+      }
+    )
+
+    // Select Specialty
+    this.studentService.getSpecialtySelect().subscribe(
+      (response: SearchSpecialty) => {
+        this.specialties = response.data
+      }
+    )
+
+    // Select SchoolCenter
+    this.studentService.getSchoolcenterSelect().subscribe(
+      (response: SearchSchoolCenter) => {
+        this.schoolcenters = response.data
+      }
+    )
+
+    // Select Zone
+    this.studentService.getZoneSelect().subscribe(
+      (response: SearchZone) => {
+        this.zones = response.data
+      }
+    )
+
+    // Select Canton
+    this.studentService.getCantonSelect().subscribe(
+      (response: SearchCanton) => {
+        this.cantones = response.data
+      }
+    )
+
+    // Select Hamlet
+    this.studentService.getHamletSelect().subscribe(
+      (response: SearchHamlet) => {
+        this.hamlets = response.data
+      }
+    )
+
+    // Select Teacher
+    this.studentService.getTeacherSelect().subscribe(
+      (response: SearchTeacher) => {
+        this.teachers = response.data
+      }
+    )
+
+  }
 
   public title:string = "Instituto Nacional De Sonzacate";
   public ficha:string = "Ficha De Matricula";

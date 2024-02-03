@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../interfaces/student.interfaces';
+import { Student } from '../../interfaces/student.interface';
 import { StudentService } from '../../services/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';

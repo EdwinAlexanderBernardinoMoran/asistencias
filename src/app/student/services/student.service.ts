@@ -1,24 +1,84 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, delay, of } from 'rxjs';
-import { SearchStudent, Student } from '../interfaces/student.interfaces';
+import { SearchStudent, Student } from '../interfaces/student.interface';
+import { Nationality, SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
+import { SearchDepartment } from 'src/app/department/interfaces/department.interface';
+import { SearchMunicipality } from 'src/app/municipality/interfaces/municipality.interface';
+import { SearchSection } from 'src/app/section/interfaces/section.interface';
+import { SearchSpecialty } from 'src/app/specialty/interfaces/specialty.interface';
+import { SearchSchoolCenter } from 'src/app/school-center/interfaces/school_center.interface';
+import { SearchZone } from 'src/app/zone/interfaces/zone.interface';
+import { SearchCanton } from 'src/app/canton/interfaces/canton.interface';
+import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
+import { SearchTeacher } from 'src/app/teacher/interfaces/teacher.interface';
 
 @Injectable({providedIn: 'root'})
 export class StudentService {
 
-  private apiUrl:string = 'http://backendinso.test/api/v1/student';
+  private apiUrl:string = 'http://backendinso.test/api/v1';
 
   constructor(private http: HttpClient) { }
 
   getStudent(): Observable<SearchStudent>{
-    return this.http.get<SearchStudent>(this.apiUrl).pipe(
+    return this.http.get<SearchStudent>(`${this.apiUrl}/student`).pipe(
       delay(1000)
     );
   }
 
   getStudentById(id: string): Observable<Student | undefined>{
-    return this.http.get<Student>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<Student>(`${this.apiUrl}/student/${id}`).pipe(
       catchError(error => of(undefined))
     )
+  }
+
+  // Select Nationality
+  getNationalitySelect(): Observable<SearchNationality>{
+    return this.http.get<SearchNationality>(`${this.apiUrl}/nationality`);
+  }
+
+  // Select Department
+  getDepartmentSelect(): Observable<SearchDepartment>{
+    return this.http.get<SearchDepartment>(`${this.apiUrl}/department`);
+  }
+
+  // Select Municipality
+  getMunicipalitySelect(): Observable<SearchMunicipality>{
+    return this.http.get<SearchMunicipality>(`${this.apiUrl}/municipality`);
+  }
+
+  // Select Anio Bachillerato
+  getSectionSelect(): Observable<SearchSection>{
+    return this.http.get<SearchSection>(`${this.apiUrl}/section`);
+  }
+
+  // Select Specialty
+  getSpecialtySelect(): Observable<SearchSpecialty>{
+    return this.http.get<SearchSpecialty>(`${this.apiUrl}/specialty`);
+  }
+
+  // Select School_Center
+  getSchoolcenterSelect(): Observable<SearchSchoolCenter>{
+    return this.http.get<SearchSchoolCenter>(`${this.apiUrl}/school_center`);
+  }
+
+  // Select Zone
+  getZoneSelect(): Observable<SearchZone>{
+    return this.http.get<SearchZone>(`${this.apiUrl}/zone`);
+  }
+
+  // Select Canton
+  getCantonSelect(): Observable<SearchCanton>{
+    return this.http.get<SearchCanton>(`${this.apiUrl}/canton`);
+  }
+
+  // Select Hamlet
+  getHamletSelect(): Observable<SearchHamlet>{
+    return this.http.get<SearchHamlet>(`${this.apiUrl}/hamlet`);
+  }
+
+  // Select Teacher
+  getTeacherSelect(): Observable<SearchTeacher>{
+    return this.http.get<SearchTeacher>(`${this.apiUrl}/teacher`);
   }
 }

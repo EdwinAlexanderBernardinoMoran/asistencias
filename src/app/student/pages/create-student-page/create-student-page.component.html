@@ -45,8 +45,9 @@
           <mat-form-field>
             <mat-label>Nacionalidad</mat-label>
             <mat-select formControlName="nationality_id">
-              <mat-option value="1">Salvadoreña</mat-option>
-              <mat-option value="2">Naturalizada</mat-option>
+              <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
+                {{ nationality.name }}
+              </mat-option>
             </mat-select>
             <mat-icon matSuffix>people</mat-icon>
           </mat-form-field>
@@ -57,9 +58,7 @@
           <mat-form-field>
             <mat-label>Departamento De Nacimiento</mat-label>
             <mat-select formControlName="departmentBirth_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option1">Santa Ana</mat-option>
-              <mat-option value="option1">Ahuachapan</mat-option>
+              <mat-option *ngFor="let department of departments" [value]="department.id">{{ department.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -70,9 +69,7 @@
           <mat-form-field>
             <mat-label>Municipio De Nacimiento</mat-label>
             <mat-select formControlName="municipalityBirth_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option1">Nahuizalco</mat-option>
-              <mat-option value="option1">Acajutla</mat-option>
+              <mat-option *ngFor="let municipality of municipalities" [value]="municipality.id">{{ municipality.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -85,9 +82,7 @@
           <mat-form-field>
             <mat-label>Año De Bachillerato</mat-label>
             <mat-select formControlName="yearStudy">
-              <mat-option value="option1">1° Año</mat-option>
-              <mat-option value="option1">2° Año</mat-option>
-              <mat-option value="option1">3° Año</mat-option>
+              <mat-option *ngFor="let section of sections" [value]="section.id">{{ section.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>local_library</mat-icon>
           </mat-form-field>
@@ -149,8 +144,8 @@
           <mat-form-field>
             <mat-label>Salvadoreña/o Por:</mat-label>
             <mat-select formControlName="salvadoreno_por">
-              <mat-option value="option1">Nacimiento</mat-option>
-              <mat-option value="option1">Naturalizado</mat-option>
+              <mat-option value="Nacimiento">Nacimiento</mat-option>
+              <mat-option value="Naturalizado">Naturalizado</mat-option>
             </mat-select>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
@@ -161,11 +156,7 @@
           <mat-form-field>
             <mat-label>Especialidad:</mat-label>
             <mat-select formControlName="incomeSpecialty_id">
-              <mat-option value="option1">Tecnico Vocacional En Desarrollo De Software</mat-option>
-              <mat-option value="option1">Tecnico Vocacional Administrativo Contable</mat-option>
-              <mat-option value="option1">Tecnico Vocacional Atencion Primaria En Salud</mat-option>
-              <mat-option value="option1">Tecnico Vocacional Mantenimiento Automotriz</mat-option>
-              <mat-option value="option1">Bachillerato General</mat-option>
+              <mat-option *ngFor="let specialty of specialties" [value]="specialty.id">{{ specialty.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>class</mat-icon>
           </mat-form-field>
@@ -176,8 +167,8 @@
           <mat-form-field>
             <mat-label>Estudio Parvularia:</mat-label>
             <mat-select formControlName="parvularianStudy">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="SI">SI</mat-option>
+              <mat-option value="NO">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>content_paste</mat-icon>
           </mat-form-field>
@@ -190,8 +181,8 @@
           <mat-form-field>
             <mat-label>Repite Grado:</mat-label>
             <mat-select formControlName="repeatSection">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="SI">SI</mat-option>
+              <mat-option value="NO">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>content_paste</mat-icon>
           </mat-form-field>
@@ -202,8 +193,7 @@
           <mat-form-field>
             <mat-label>Centro De Procedencia:</mat-label>
             <mat-select formControlName="school_center_id">
-              <mat-option value="option1">Centro Escolar Canton Sabana San Juan Abajo</mat-option>
-              <mat-option value="option1">Centro Escolar Romero Alvergue</mat-option>
+              <mat-option *ngFor="let schoolcenter of schoolcenters" [value]="schoolcenter.id">{{ schoolcenter.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>content_paste</mat-icon>
           </mat-form-field>
@@ -240,8 +230,8 @@
           <mat-form-field>
             <mat-label>Sexo</mat-label>
             <mat-select formControlName="sexo">
-              <mat-option value="option1">Masculino</mat-option>
-              <mat-option value="option3">Femenino</mat-option>
+              <mat-option value="F">Femenino</mat-option>
+              <mat-option value="M">Masculino</mat-option>
             </mat-select>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
@@ -252,11 +242,11 @@
           <mat-form-field>
             <mat-label>Estado Familiar</mat-label>
             <mat-select formControlName="stateFamiliar">
-              <mat-option value="option1">Casado</mat-option>
-              <mat-option value="option3">Viudo</mat-option>
-              <mat-option value="option3">Divorciado</mat-option>
-              <mat-option value="option3">Soltero</mat-option>
-              <mat-option value="option3">Acompañado</mat-option>
+              <mat-option value="V">Viudo</mat-option>
+              <mat-option value="C">Casado</mat-option>
+              <mat-option value="A">Acompañado</mat-option>
+              <mat-option value="D">Divorciado</mat-option>
+              <mat-option value="S">Soltero</mat-option>
             </mat-select>
             <mat-icon matSuffix>people</mat-icon>
           </mat-form-field>
@@ -267,15 +257,16 @@
           <mat-form-field>
             <mat-label>Discapacidad:</mat-label>
             <mat-select formControlName="disability">
-              <mat-option value="option1">Ceguera</mat-option>
-              <mat-option value="option3">Baja Vision</mat-option>
-              <mat-option value="option3">sordera</mat-option>
-              <mat-option value="option3">Hipoacusia</mat-option>
-              <mat-option value="option3">Sindrome De Down</mat-option>
-              <!-- <mat-option value="option3">Retardo Mental</mat-option>
-              <mat-option value="option3">Problemas Motores</mat-option>
-              <mat-option value="option3">Ausencia De Miembros</mat-option>
-              <mat-option value="option3">Autismo</mat-option> -->
+              <mat-option value="Ceguera">Ceguera</mat-option>
+              <mat-option value="Baja Vision">Baja Vision</mat-option>
+              <mat-option value="Sordera">sordera</mat-option>
+              <mat-option value="Hipoacusia">Hipoacusia</mat-option>
+              <mat-option value="Sindrome De Down">Sindrome De Down</mat-option>
+              <mat-option value="Retardo Mental">Retardo Mental</mat-option>
+              <mat-option value="Problemas Motores">Problemas Motores</mat-option>
+              <mat-option value="Ausencia De Miembros">Ausencia De Miembros</mat-option>
+              <mat-option value="Autismo">Autismo</mat-option>
+              <mat-option value="Ninguna">Ninguna</mat-option>
             </mat-select>
             <mat-icon matSuffix>accessible</mat-icon>
           </mat-form-field>
@@ -318,8 +309,7 @@
           <mat-form-field>
             <mat-label>Zonas:</mat-label>
             <mat-select formControlName="zone_id">
-              <mat-option value="option1">Rural</mat-option>
-              <mat-option value="option3">Urbana</mat-option>
+              <mat-option *ngFor="let zone of zones" [value]="zone.id">{{ zone.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>list</mat-icon>
           </mat-form-field>
@@ -330,9 +320,9 @@
           <mat-form-field>
             <mat-label>Departamento:</mat-label>
             <mat-select formControlName="departmentResidence_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option3">Santa Ana</mat-option>
-              <mat-option value="option3">Ahuachapan</mat-option>
+              <mat-option *ngFor="let departmentResident of departments" [value]="departmentResident.id">
+                {{ departmentResident.name }}
+              </mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -343,9 +333,9 @@
           <mat-form-field>
             <mat-label>Municipio:</mat-label>
             <mat-select formControlName="municipalityResidence_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option3">Sonzacate</mat-option>
-              <mat-option value="option3">Nahuizalco</mat-option>
+              <mat-option *ngFor="let municipalityResident of municipalities" [value]="municipalityResident.id">
+                {{ municipalityResident.name }}
+              </mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -356,9 +346,7 @@
           <mat-form-field>
             <mat-label>Canton:</mat-label>
             <mat-select formControlName="cantonResidence_id">
-              <mat-option value="option1">Sabana San Juan Abajo</mat-option>
-              <mat-option value="option1">Sabana San Juan Arriba</mat-option>
-              <mat-option value="option3">El Almendro</mat-option>
+              <mat-option *ngFor="let canton of cantones" [value]="canton.id">{{ canton.name}}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -371,9 +359,7 @@
           <mat-form-field>
             <mat-label>Caserio:</mat-label>
             <mat-select formControlName="hamletResidence_id">
-              <mat-option value="option1">Sabana San Juan Abajo</mat-option>
-              <mat-option value="option1">Sabana San Juan Arriba</mat-option>
-              <mat-option value="option3">El Almendro</mat-option>
+              <mat-option *ngFor="let hamlet of hamlets" [value]="hamlet.id">{{ hamlet.name}}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -409,11 +395,11 @@
           <mat-form-field>
             <mat-label>Medio De Transporte Para Llegar Al Centro Educativo:</mat-label>
             <mat-select formControlName="middleTransport">
-              <mat-option value="option1">A Pie</mat-option>
-              <mat-option value="option3">Bicicleta</mat-option>
-              <mat-option value="option3">Autobus</mat-option>
-              <mat-option value="option3">Vehiculo Propio</mat-option>
-              <mat-option value="option3">Otro</mat-option>
+              <mat-option value="A Pie">A Pie</mat-option>
+              <mat-option value="Bicicleta">Bicicleta</mat-option>
+              <mat-option value="Autobus">Autobus</mat-option>
+              <mat-option value="Vehiculo Propio">Vehiculo Propio</mat-option>
+              <mat-option value="Otro">Otro</mat-option>
             </mat-select>
             <mat-icon matSuffix>directions_bus</mat-icon>
           </mat-form-field>
@@ -455,8 +441,8 @@
           <mat-form-field>
             <mat-label>Integrados:</mat-label>
             <mat-select formControlName="integrated">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option3">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
@@ -467,11 +453,11 @@
           <mat-form-field>
             <mat-label>Depende Economicamente De:</mat-label>
             <mat-select formControlName="dependsEconomically">
-              <mat-option value="option1">Mama</mat-option>
-              <mat-option value="option3">Papa</mat-option>
-              <mat-option value="option3">Mama y Papa</mat-option>
-              <mat-option value="option3">Abuelo/a</mat-option>
-              <mat-option value="option3">Tio/a</mat-option>
+              <mat-option value="Mama">Mama</mat-option>
+              <mat-option value="Papa">Papa</mat-option>
+              <mat-option value="Mama y Papa">Mama y Papa</mat-option>
+              <mat-option value="Abuelo/a">Abuelo/a</mat-option>
+              <mat-option value="Tio/a">Tio/a</mat-option>
             </mat-select>
             <mat-icon matSuffix>attach_money</mat-icon>
           </mat-form-field>
@@ -484,8 +470,8 @@
           <mat-form-field>
             <mat-label>Tiene Hijos:</mat-label>
             <mat-select formControlName="hasChildren">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option3">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>group</mat-icon>
           </mat-form-field>
@@ -495,7 +481,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Cuantos Hijos Tiene:</mat-label>
-            <input type="password" matInput placeholder="Cuantos Hijos Tiene" formControlName="numberChildren">
+            <input type="text" matInput placeholder="Cuantos Hijos Tiene" formControlName="numberChildren">
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
         </div>
@@ -505,8 +491,8 @@
           <mat-form-field>
             <mat-label>Trabaja:</mat-label>
             <mat-select formControlName="work">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option3">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>group</mat-icon>
           </mat-form-field>
@@ -517,11 +503,11 @@
           <mat-form-field>
             <mat-label>Convivencia Con:</mat-label>
             <mat-select formControlName="coexistenceWith">
-              <mat-option value="option1">Mama</mat-option>
-              <mat-option value="option3">Papa</mat-option>
-              <mat-option value="option3">Mama y Papa</mat-option>
-              <mat-option value="option3">Abuelo/a</mat-option>
-              <mat-option value="option3">Tio/a</mat-option>
+              <mat-option value="Mama">Mama</mat-option>
+              <mat-option value="Papa">Papa</mat-option>
+              <mat-option value="Mama y Papa">Mama y Papa</mat-option>
+              <mat-option value="Abuelo/a">Abuelo/a</mat-option>
+              <mat-option value="Tio/a">Tio/a</mat-option>
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
@@ -647,11 +633,11 @@
           <mat-form-field>
             <mat-label>Estado Familiar:</mat-label>
             <mat-select formControlName="familyStateResponsible">
-              <mat-option value="option1">Separado</mat-option>
-              <mat-option value="option3">Casado</mat-option>
-              <mat-option value="option3">Viudo</mat-option>
-              <mat-option value="option3">Divorciado</mat-option>
-              <mat-option value="option3">Acompañado</mat-option>
+              <mat-option value="V">Viudo</mat-option>
+              <mat-option value="C">Casado</mat-option>
+              <mat-option value="A">Acompañado</mat-option>
+              <mat-option value="D">Divorciado</mat-option>
+              <mat-option value="S">Soltero</mat-option>
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
@@ -694,8 +680,7 @@
           <mat-form-field>
             <mat-label>Zonas:</mat-label>
             <mat-select formControlName="zoneReponsible_id">
-              <mat-option value="option1">Rural</mat-option>
-              <mat-option value="option3">Urbana</mat-option>
+              <mat-option *ngFor="let zoneResposible of zones" [value]="zoneResposible.id">{{ zoneResposible.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>list</mat-icon>
           </mat-form-field>
@@ -706,9 +691,7 @@
           <mat-form-field>
             <mat-label>Departamento:</mat-label>
             <mat-select formControlName="departmentReponsible_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option3">Santa Ana</mat-option>
-              <mat-option value="option3">Ahuachapan</mat-option>
+              <mat-option *ngFor="let departmentResponsible of departments" [value]="departmentResponsible.id">{{ departmentResponsible.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -719,9 +702,7 @@
           <mat-form-field>
             <mat-label>Municipio:</mat-label>
             <mat-select formControlName="municipalityReponsible_id">
-              <mat-option value="option1">Sonsonate</mat-option>
-              <mat-option value="option3">Sonzacate</mat-option>
-              <mat-option value="option3">Nahuizalco</mat-option>
+              <mat-option *ngFor="let municipalityResponsible of municipalities" [value]="municipalityResponsible.id">{{ municipalityResponsible.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>assignment_ind</mat-icon>
           </mat-form-field>
@@ -732,9 +713,7 @@
           <mat-form-field>
             <mat-label>Canton:</mat-label>
             <mat-select formControlName="cantonReponsible_id">
-              <mat-option value="option1">Sabana San Juan Abajo</mat-option>
-              <mat-option value="option1">Sabana San Juan Arriba</mat-option>
-              <mat-option value="option3">El Almendro</mat-option>
+              <mat-option *ngFor="let cantonResponsible of cantones" [value]="cantonResponsible.id">{{ cantonResponsible.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -747,9 +726,7 @@
           <mat-form-field>
             <mat-label>Caserio:</mat-label>
             <mat-select formControlName="hamletReponsible_id">
-              <mat-option value="option1">Sabana San Juan Abajo</mat-option>
-              <mat-option value="option1">Sabana San Juan Arriba</mat-option>
-              <mat-option value="option3">El Almendro</mat-option>
+              <mat-option *ngFor="let hamletResponsible of hamlets" [value]="hamletResponsible.id">{{ hamletResponsible.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -760,8 +737,8 @@
           <mat-form-field>
             <mat-label>Tipo De Calle:</mat-label>
             <mat-select formControlName="streetTypeReponsible">
-              <mat-option value="option1">Polvosa</mat-option>
-              <mat-option value="option1">Enpavimentada</mat-option>
+              <mat-option value="Polvosa">Polvosa</mat-option>
+              <mat-option value="Enpavimentada">Enpavimentada</mat-option>
             </mat-select>
             <mat-icon matSuffix>chevron_right</mat-icon>
           </mat-form-field>
@@ -802,11 +779,11 @@
           <mat-form-field>
             <mat-label>Escolaridad:</mat-label>
             <mat-select formControlName="responsibleSchool">
-              <mat-option value="option1">Primer ciclo (1° a 3°)</mat-option>
-              <mat-option value="option3">Segundo ciclo (4° a 6°)</mat-option>
-              <mat-option value="option3">Tercer ciclo (7° a 9°)</mat-option>
-              <mat-option value="option3">Bachiller</mat-option>
-              <mat-option value="option3">Ninguno</mat-option>
+              <mat-option value="Primer ciclo (1° a 3°)">Primer ciclo (1° a 3°)</mat-option>
+              <mat-option value="Segundo ciclo (4° a 6°)">Segundo ciclo (4° a 6°)</mat-option>
+              <mat-option value="Tercer ciclo (7° a 9°)">Tercer ciclo (7° a 9°)</mat-option>
+              <mat-option value="Bachiller">Bachiller</mat-option>
+              <mat-option value="Ninguno">Ninguno</mat-option>
             </mat-select>
             <mat-icon matSuffix>book</mat-icon>
           </mat-form-field>
@@ -833,9 +810,9 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field color="primary">
             <mat-label>Fecha de revision:</mat-label>
-            <input matInput [matDatepicker]="picker7" formControlName="dateReviewForm">
-            <mat-datepicker-toggle matIconSuffix [for]="picker7"></mat-datepicker-toggle>
-            <mat-datepicker #picker7 color="primary"></mat-datepicker>
+            <input matInput [matDatepicker]="dateReviewForm" formControlName="dateReviewForm">
+            <mat-datepicker-toggle matIconSuffix [for]="dateReviewForm"></mat-datepicker-toggle>
+            <mat-datepicker #dateReviewForm color="primary"></mat-datepicker>
           </mat-form-field>
         </div>
 
@@ -844,8 +821,8 @@
           <mat-form-field>
             <mat-label>Partida De Nacimiento:</mat-label>
             <mat-select formControlName="birthCertificate">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -856,8 +833,8 @@
           <mat-form-field>
             <mat-label>Certificacion De Notas:</mat-label>
             <mat-select formControlName="certificationNotes">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -868,8 +845,8 @@
           <mat-form-field>
             <mat-label>Certificado:</mat-label>
             <mat-select formControlName="certificate">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -882,8 +859,8 @@
           <mat-form-field>
             <mat-label>Fotos:</mat-label>
             <mat-select formControlName="photos">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -906,8 +883,8 @@
           <mat-form-field>
             <mat-label>Constancia De Conducta:</mat-label>
             <mat-select formControlName="RecordNotes">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -918,8 +895,8 @@
           <mat-form-field>
             <mat-label>Carnet Residente:</mat-label>
             <mat-select formControlName="residentCard">
-              <mat-option value="option1">SI</mat-option>
-              <mat-option value="option1">NO</mat-option>
+              <mat-option value="1">SI</mat-option>
+              <mat-option value="0">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -930,9 +907,7 @@
           <mat-form-field>
             <mat-label>Profesor Que Realizo La Matricula:</mat-label>
             <mat-select formControlName="teacher_id">
-              <mat-option value="option1">Juan Nelson Navarro De Leon</mat-option>
-              <mat-option value="option1">Mercedes Del Carmen Menjivar</mat-option>
-              <mat-option value="option1">Irma Lorena Alfaro</mat-option>
+              <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">{{ teacher.names }} {{ teacher.lastNames }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>

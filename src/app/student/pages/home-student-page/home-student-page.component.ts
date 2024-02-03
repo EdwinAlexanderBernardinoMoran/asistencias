@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Links, SearchStudent, Student } from '../../interfaces/student.interfaces';
+import { Links, SearchStudent, Student } from '../../interfaces/student.interface';
 import { StudentService } from '../../services/student.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
