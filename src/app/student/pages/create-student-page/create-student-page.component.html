@@ -4,51 +4,59 @@
 
   <mat-tab-group>
 
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
     <!-- Toolbar-one -->
     <mat-tab label="Identificacion Del Estudiante">
       <h2 class="mt-5">Informacion Del Estudiante:</h2>
       <div class="flex">
+        <!-- Nombres -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Nombres</mat-label>
-            <input type="text" matInput placeholder="Nombres">
-            <mat-icon matSuffix>account_circle</mat-icon>
-          </mat-form-field>
-        </div>
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
-          <mat-form-field>
-            <mat-label>Apellidos</mat-label>
-            <input type="text" matInput placeholder="Apellidos">
+            <input type="text" matInput placeholder="Nombres" formControlName="names">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
 
+        <!-- Apellidos -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input type="text" matInput placeholder="Apellidos" formControlName="lastnames">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Fecha_De_Nacimiento -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field color="primary">
             <mat-label>Fecha De Nacimiento</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            <input matInput [matDatepicker]="dateBirth" formControlName="dateBirth">
+            <mat-datepicker-toggle matIconSuffix [for]="dateBirth"></mat-datepicker-toggle>
+            <mat-datepicker #dateBirth color="primary"></mat-datepicker>
           </mat-form-field>
         </div>
       </div>
 
       <div class="flex">
+        <!-- Nacionalidad -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Nacionalidad</mat-label>
-            <mat-select [disabled]="disableSelect.value">
-              <mat-option value="option1">Salvadoreña</mat-option>
-              <!-- <mat-option value="option2" disabled>Option 2 (disabled)</mat-option> -->
-              <mat-option value="option3">Naturalizada</mat-option>
+            <mat-select formControlName="nationality_id">
+              <mat-option value="1">Salvadoreña</mat-option>
+              <mat-option value="2">Naturalizada</mat-option>
             </mat-select>
             <mat-icon matSuffix>people</mat-icon>
           </mat-form-field>
         </div>
+
+        <!-- Departamento_De_Nacimiento -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Departamento De Nacimiento</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="departmentBirth_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option1">Santa Ana</mat-option>
               <mat-option value="option1">Ahuachapan</mat-option>
@@ -57,10 +65,11 @@
           </mat-form-field>
         </div>
 
+        <!-- Municipio De Nacimiento -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Municipio De Nacimiento</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="municipalityBirth_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option1">Nahuizalco</mat-option>
               <mat-option value="option1">Acajutla</mat-option>
@@ -70,12 +79,12 @@
         </div>
       </div>
 
-
       <div class="flex">
+        <!-- Ano_De_Bachillerato -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Año De Bachillerato</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="yearStudy">
               <mat-option value="option1">1° Año</mat-option>
               <mat-option value="option1">2° Año</mat-option>
               <mat-option value="option1">3° Año</mat-option>
@@ -83,64 +92,75 @@
             <mat-icon matSuffix>local_library</mat-icon>
           </mat-form-field>
         </div>
+
+        <!-- NIE -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>NIE</mat-label>
-            <input matInput #postalCode maxlength="10" placeholder="Ex. 8148921010">
+            <input matInput #postalCode maxlength="10" placeholder="Ex. 8148921010" formControlName="nie">
             <mat-hint align="end">{{postalCode.value.length}} / 10</mat-hint>
             <mat-icon matSuffix>person_pin</mat-icon>
           </mat-form-field>
         </div>
 
+        <!-- Numero_de_Partida_Nacimiento -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Numero De Partida De Nacimiento:</mat-label>
-            <input type="text" matInput placeholder="# Numero De Partida">
+            <input type="text" matInput placeholder="# Numero De Partida" formControlName="departureNumber">
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
         </div>
       </div>
 
       <div class="flex">
+        <!-- Numero_De__Folio -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Numero De Folio De Nacimiento:</mat-label>
-            <input type="text" matInput placeholder="# Numero De Folio">
-            <mat-icon matSuffix>blur_on</mat-icon>
-          </mat-form-field>
-        </div>
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
-          <mat-form-field>
-            <mat-label>Libro De La Partida De Nacimiento:</mat-label>
-            <input type="text" matInput placeholder="# Numero De Libro">
+            <input type="text" matInput placeholder="# Numero De Folio" formControlName="departureFolio">
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
         </div>
 
+        <!-- Libro_De_Partida -->
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <mat-form-field>
+            <mat-label>Libro De La Partida De Nacimiento:</mat-label>
+            <input type="text" matInput placeholder="# Numero De Libro" formControlName="departureBook">
+            <mat-icon matSuffix>blur_on</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Otro_Documento_De_Identificacion -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Otro Documento De Identificacion</mat-label>
-            <input type="text" matInput placeholder="Otro Documento De Identificacion">
+            <input type="text" matInput placeholder="Otro Documento De Identificacion" formControlName="anotherIdentificationDocument">
             <mat-icon matSuffix>portrait</mat-icon>
           </mat-form-field>
         </div>
       </div>
 
       <div class="flex">
+
+        <!-- Salvadoreno Por -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Salvadoreña/o Por:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="salvadoreno_por">
               <mat-option value="option1">Nacimiento</mat-option>
               <mat-option value="option1">Naturalizado</mat-option>
             </mat-select>
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
         </div>
+
+        <!-- Especialidad -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Especialidad:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="incomeSpecialty_id">
               <mat-option value="option1">Tecnico Vocacional En Desarrollo De Software</mat-option>
               <mat-option value="option1">Tecnico Vocacional Administrativo Contable</mat-option>
               <mat-option value="option1">Tecnico Vocacional Atencion Primaria En Salud</mat-option>
@@ -151,10 +171,11 @@
           </mat-form-field>
         </div>
 
+        <!-- Estudio Parvularia -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Estudio Parvularia:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="parvularianStudy">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -164,30 +185,35 @@
       </div>
 
       <div class="flex">
+        <!-- Repite Grado -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Repite Grado:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="repeatSection">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>content_paste</mat-icon>
           </mat-form-field>
         </div>
+
+        <!-- Centro De Procedencia -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Centro De Procedencia:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="school_center_id">
               <mat-option value="option1">Centro Escolar Canton Sabana San Juan Abajo</mat-option>
               <mat-option value="option1">Centro Escolar Romero Alvergue</mat-option>
             </mat-select>
             <mat-icon matSuffix>content_paste</mat-icon>
           </mat-form-field>
         </div>
+
+        <!-- Año Que Estudio Anteriormente -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Año Que Estudio Anteriormente</mat-label>
-            <input type="text" matInput placeholder="Otro Documento De Identificacion">
+            <input type="text" matInput placeholder="Otro Documento De Identificacion" formControlName="previousYear">
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
         </div>
@@ -204,7 +230,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Tipo De Sangre</mat-label>
-            <input type="text" matInput placeholder="Tipo De Sangre">
+            <input type="text" matInput placeholder="Tipo De Sangre" formControlName="bloodType">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -213,7 +239,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Sexo</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="sexo">
               <mat-option value="option1">Masculino</mat-option>
               <mat-option value="option3">Femenino</mat-option>
             </mat-select>
@@ -225,7 +251,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Estado Familiar</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="stateFamiliar">
               <mat-option value="option1">Casado</mat-option>
               <mat-option value="option3">Viudo</mat-option>
               <mat-option value="option3">Divorciado</mat-option>
@@ -240,7 +266,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Discapacidad:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="disability">
               <mat-option value="option1">Ceguera</mat-option>
               <mat-option value="option3">Baja Vision</mat-option>
               <mat-option value="option3">sordera</mat-option>
@@ -263,7 +289,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
               Please enter a valid email address
             </mat-error>
@@ -278,7 +304,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Telefono</mat-label>
-            <input type="text" matInput placeholder="0000-0000">
+            <input type="text" matInput placeholder="0000-0000" formControlName="telephone">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
         </div>
@@ -291,7 +317,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Zonas:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="zone_id">
               <mat-option value="option1">Rural</mat-option>
               <mat-option value="option3">Urbana</mat-option>
             </mat-select>
@@ -303,7 +329,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Departamento:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="departmentResidence_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option3">Santa Ana</mat-option>
               <mat-option value="option3">Ahuachapan</mat-option>
@@ -316,7 +342,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Municipio:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="municipalityResidence_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option3">Sonzacate</mat-option>
               <mat-option value="option3">Nahuizalco</mat-option>
@@ -329,7 +355,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Canton:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="cantonResidence_id">
               <mat-option value="option1">Sabana San Juan Abajo</mat-option>
               <mat-option value="option1">Sabana San Juan Arriba</mat-option>
               <mat-option value="option3">El Almendro</mat-option>
@@ -344,7 +370,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Caserio:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="hamletResidence_id">
               <mat-option value="option1">Sabana San Juan Abajo</mat-option>
               <mat-option value="option1">Sabana San Juan Arriba</mat-option>
               <mat-option value="option3">El Almendro</mat-option>
@@ -357,9 +383,9 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Tipo De Calle:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
-              <mat-option value="option1">Polvosa</mat-option>
-              <mat-option value="option1">Enpavimentada</mat-option>
+            <mat-select formControlName="streetType">
+              <mat-option value="Polvosa">Polvosa</mat-option>
+              <mat-option value="Enpavimentada">Enpavimentada</mat-option>
             </mat-select>
             <mat-icon matSuffix>chevron_right</mat-icon>
           </mat-form-field>
@@ -369,7 +395,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Direccion Completa Del Estudiante</mat-label>
-            <input type="text" matInput placeholder="Direccion Completa Del Estudiante">
+            <input type="text" matInput placeholder="Direccion Completa Del Estudiante" formControlName="fullAddress">
             <mat-icon matSuffix>directions_walk</mat-icon>
           </mat-form-field>
         </div>
@@ -382,7 +408,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Medio De Transporte Para Llegar Al Centro Educativo:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="middleTransport">
               <mat-option value="option1">A Pie</mat-option>
               <mat-option value="option3">Bicicleta</mat-option>
               <mat-option value="option3">Autobus</mat-option>
@@ -397,7 +423,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Kilometros De Distancia Entre El Instituto Y Su Residencia:</mat-label>
-            <input type="text" matInput placeholder="Kilometros De Distancia Entre El Instituto Y Su Residencia">
+            <input type="text" matInput placeholder="Kilometros De Distancia Entre El Instituto Y Su Residencia" formControlName="distanceFromHomeSchool">
             <mat-icon matSuffix>compare_arrows</mat-icon>
           </mat-form-field>
         </div>
@@ -406,7 +432,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Factor De Riesgo:</mat-label>
-            <input type="text" matInput placeholder="Factor De Riesgo">
+            <input type="text" matInput placeholder="Factor De Riesgo" formControlName="riskFactor">
             <mat-icon matSuffix>add_alert</mat-icon>
           </mat-form-field>
         </div>
@@ -419,7 +445,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Numero De Integrantes De La Familia:</mat-label>
-            <input type="text" matInput placeholder="Numero De Integrantes De La Familia">
+            <input type="text" matInput placeholder="Numero De Integrantes De La Familia" formControlName="numberMembersFamily">
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
         </div>
@@ -428,7 +454,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Integrados:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="integrated">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option3">NO</mat-option>
             </mat-select>
@@ -440,7 +466,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Depende Economicamente De:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="dependsEconomically">
               <mat-option value="option1">Mama</mat-option>
               <mat-option value="option3">Papa</mat-option>
               <mat-option value="option3">Mama y Papa</mat-option>
@@ -457,7 +483,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Tiene Hijos:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="hasChildren">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option3">NO</mat-option>
             </mat-select>
@@ -469,7 +495,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Cuantos Hijos Tiene:</mat-label>
-            <input type="password" matInput placeholder="Cuantos Hijos Tiene">
+            <input type="password" matInput placeholder="Cuantos Hijos Tiene" formControlName="numberChildren">
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
         </div>
@@ -478,7 +504,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Trabaja:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="work">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option3">NO</mat-option>
             </mat-select>
@@ -490,7 +516,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Convivencia Con:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="coexistenceWith">
               <mat-option value="option1">Mama</mat-option>
               <mat-option value="option3">Papa</mat-option>
               <mat-option value="option3">Mama y Papa</mat-option>
@@ -507,7 +533,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Nombre De La Madre:</mat-label>
-            <input type="text" matInput placeholder="Nombre De La Madre">
+            <input type="text" matInput placeholder="Nombre De La Madre" formControlName="mothersName">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -516,7 +542,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Ocupacion De La Madre:</mat-label>
-            <input type="text" matInput placeholder="Ocupacion De La Madre">
+            <input type="text" matInput placeholder="Ocupacion De La Madre" formControlName="occupationMother">
             <mat-icon matSuffix>assignment_turned_in</mat-icon>
           </mat-form-field>
         </div>
@@ -527,7 +553,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Lugar De Trabajo ( madre ):</mat-label>
-            <input type="text" matInput placeholder="Lugar De Trabajo ( madre )">
+            <input type="text" matInput placeholder="Lugar De Trabajo ( madre )" formControlName="workplaceOfTheMother">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -536,7 +562,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Telefono ( madre ):</mat-label>
-            <input type="text" matInput placeholder="0000-0000">
+            <input type="text" matInput placeholder="0000-0000" formControlName="mothersPhone">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
         </div>
@@ -547,7 +573,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Nombre Del Padre:</mat-label>
-            <input type="text" matInput placeholder="Nombre Del Padre">
+            <input type="text" matInput placeholder="Nombre Del Padre" formControlName="fathersName">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -556,7 +582,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Ocupacion Del Padre:</mat-label>
-            <input type="text" matInput placeholder="Ocupacion Del Padre">
+            <input type="text" matInput placeholder="Ocupacion Del Padre" formControlName="occupationFather">
             <mat-icon matSuffix>assignment_turned_in</mat-icon>
           </mat-form-field>
         </div>
@@ -567,7 +593,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Lugar De Trabajo ( padre ):</mat-label>
-            <input type="text" matInput placeholder="Lugar De Trabajo ( padre )">
+            <input type="text" matInput placeholder="Lugar De Trabajo ( padre )" formControlName="workplaceOfTheFather">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -576,7 +602,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Telefono ( padre ):</mat-label>
-            <input type="text" matInput placeholder="0000-0000">
+            <input type="text" matInput placeholder="0000-0000" formControlName="fathersPhone">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
         </div>
@@ -592,7 +618,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Nombres Del Responsable:</mat-label>
-            <input type="text" matInput placeholder="Nombres Del Responsable">
+            <input type="text" matInput placeholder="Nombres Del Responsable" formControlName="ResponsibleNames">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -601,7 +627,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Apellidos Del Responsable:</mat-label>
-            <input type="text" matInput placeholder="Apellidos Del Responsable">
+            <input type="text" matInput placeholder="Apellidos Del Responsable" formControlName="ResponsibleLastNames">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div>
@@ -610,7 +636,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Numero De DUI</mat-label>
-            <input matInput #postalCode maxlength="10" placeholder="00000000-0">
+            <input matInput #postalCode maxlength="10" placeholder="00000000-0" formControlName="DuiResponsible">
             <mat-hint align="end">{{postalCode.value.length}} / 10</mat-hint>
             <mat-icon matSuffix>person_pin</mat-icon>
           </mat-form-field>
@@ -620,7 +646,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Estado Familiar:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="familyStateResponsible">
               <mat-option value="option1">Separado</mat-option>
               <mat-option value="option3">Casado</mat-option>
               <mat-option value="option3">Viudo</mat-option>
@@ -639,7 +665,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            <input type="email" matInput formControlName="emailResponsible" placeholder="Ex. pat@example.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
               Please enter a valid email address
             </mat-error>
@@ -654,7 +680,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Telefono</mat-label>
-            <input type="text" matInput placeholder="0000-0000">
+            <input type="text" matInput placeholder="0000-0000" formControlName="phoneResponsible">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
         </div>
@@ -667,7 +693,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Zonas:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="zoneReponsible_id">
               <mat-option value="option1">Rural</mat-option>
               <mat-option value="option3">Urbana</mat-option>
             </mat-select>
@@ -679,7 +705,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Departamento:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="departmentReponsible_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option3">Santa Ana</mat-option>
               <mat-option value="option3">Ahuachapan</mat-option>
@@ -692,7 +718,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Municipio:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="municipalityReponsible_id">
               <mat-option value="option1">Sonsonate</mat-option>
               <mat-option value="option3">Sonzacate</mat-option>
               <mat-option value="option3">Nahuizalco</mat-option>
@@ -705,7 +731,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Canton:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="cantonReponsible_id">
               <mat-option value="option1">Sabana San Juan Abajo</mat-option>
               <mat-option value="option1">Sabana San Juan Arriba</mat-option>
               <mat-option value="option3">El Almendro</mat-option>
@@ -720,7 +746,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Caserio:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="hamletReponsible_id">
               <mat-option value="option1">Sabana San Juan Abajo</mat-option>
               <mat-option value="option1">Sabana San Juan Arriba</mat-option>
               <mat-option value="option3">El Almendro</mat-option>
@@ -733,7 +759,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Tipo De Calle:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="streetTypeReponsible">
               <mat-option value="option1">Polvosa</mat-option>
               <mat-option value="option1">Enpavimentada</mat-option>
             </mat-select>
@@ -745,7 +771,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Direccion Completa Del Responsable</mat-label>
-            <input type="text" matInput placeholder="Direccion Completa Del Responsable">
+            <input type="text" matInput placeholder="Direccion Completa Del Responsable" formControlName="fullAddressResponsible">
             <mat-icon matSuffix>directions_walk</mat-icon>
           </mat-form-field>
         </div>
@@ -757,25 +783,25 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Profesion U Oficio:</mat-label>
-            <input type="text" matInput placeholder="Profesion U Oficio">
+            <input type="text" matInput placeholder="Profesion U Oficio" formControlName="professionIfficeResponsible">
             <mat-icon matSuffix>business_center</mat-icon>
           </mat-form-field>
         </div>
 
         <!-- Telefono ó celular -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+        <!-- <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Telefono ó celular:</mat-label>
-            <input type="text" matInput placeholder="Telefono ó celular">
+            <input type="text" matInput placeholder="Telefono ó celular" formControlName="responsibleSchool">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
-        </div>
+        </div> -->
 
         <!-- Escolaridad -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Escolaridad:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="responsibleSchool">
               <mat-option value="option1">Primer ciclo (1° a 3°)</mat-option>
               <mat-option value="option3">Segundo ciclo (4° a 6°)</mat-option>
               <mat-option value="option3">Tercer ciclo (7° a 9°)</mat-option>
@@ -787,10 +813,10 @@
         </div>
 
         <!-- Factor De Riesgo -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Factor De Riesgo:</mat-label>
-            <input type="text" matInput placeholder="Factor De Riesgo">
+            <input type="text" matInput placeholder="Factor De Riesgo" formControlName="riskFactorResponsable">
             <mat-icon matSuffix>add_alert</mat-icon>
           </mat-form-field>
         </div>
@@ -807,7 +833,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field color="primary">
             <mat-label>Fecha de revision:</mat-label>
-            <input matInput [matDatepicker]="picker7">
+            <input matInput [matDatepicker]="picker7" formControlName="dateReviewForm">
             <mat-datepicker-toggle matIconSuffix [for]="picker7"></mat-datepicker-toggle>
             <mat-datepicker #picker7 color="primary"></mat-datepicker>
           </mat-form-field>
@@ -817,7 +843,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Partida De Nacimiento:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="birthCertificate">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -829,7 +855,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Certificacion De Notas:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="certificationNotes">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -841,7 +867,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Certificado:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="certificate">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -855,7 +881,7 @@
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Fotos:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="photos">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -864,22 +890,22 @@
         </div>
 
         <!-- Fotocopias De DUI -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+        <!-- <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Fotocopias De DUI:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="RecordNotes">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
-        </div>
+        </div> -->
 
         <!-- Constancia De Conducta -->
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Constancia De Conducta:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="RecordNotes">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
@@ -888,24 +914,22 @@
         </div>
 
         <!-- Carnet Residente -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
           <mat-form-field>
             <mat-label>Carnet Residente:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="residentCard">
               <mat-option value="option1">SI</mat-option>
               <mat-option value="option1">NO</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
         </div>
-      </div>
 
-      <div class="flex">
         <!-- Profesor Que Realizo La Matricula -->
-        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
           <mat-form-field>
             <mat-label>Profesor Que Realizo La Matricula:</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select formControlName="teacher_id">
               <mat-option value="option1">Juan Nelson Navarro De Leon</mat-option>
               <mat-option value="option1">Mercedes Del Carmen Menjivar</mat-option>
               <mat-option value="option1">Irma Lorena Alfaro</mat-option>
@@ -917,7 +941,7 @@
 
       <div class="flex">
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
-          <button mat-raised-button>
+          <button mat-raised-button (click)="onSubmit()">
             <mat-icon matSuffix>send</mat-icon>
             Enviar Datos
           </button>
@@ -925,5 +949,6 @@
 
       </div>
     </mat-tab>
+    </form>
   </mat-tab-group>
 </div>
