@@ -5,6 +5,7 @@ export interface Data {
 }
 
 export interface StudentForm {
+  id:                            number;
   names:                         string;
   lastnames:                     string;
   dateBirth:                     string;

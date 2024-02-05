@@ -11,6 +11,8 @@ import { SearchZone, Zone } from 'src/app/zone/interfaces/zone.interface';
 import { Canton, SearchCanton } from 'src/app/canton/interfaces/canton.interface';
 import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher, Teacher } from 'src/app/teacher/interfaces/teacher.interface';
+import { DatePipe } from '@angular/common';
+
 
 export interface Hamlet{
   id: number,
@@ -198,7 +200,20 @@ export class CreateStudentPageComponent implements OnInit{
     teacher_id: new FormControl(''),
   });
 
+  // Formatea la fecha.
+  setDateForm(input: string):void {
+    const fecha = this.studentForm.get(input)?.value;
+    const newfecha = new DatePipe('en-US').transform(fecha, 'yyyy-MM-dd');
+    this.studentForm.get(input)?.setValue(newfecha);
+  }
+
+
+
   onSubmit():void {
+
+    this.setDateForm('dateBirth');
+    this.setDateForm('dateReviewForm');
+
     console.log({
       formIsValid: this.studentForm.valid,
       value: this.studentForm.value

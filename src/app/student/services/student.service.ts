@@ -12,6 +12,7 @@ import { SearchZone } from 'src/app/zone/interfaces/zone.interface';
 import { SearchCanton } from 'src/app/canton/interfaces/canton.interface';
 import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher } from 'src/app/teacher/interfaces/teacher.interface';
+import { StudentForm } from '../interfaces/student-create.interface';
 
 @Injectable({providedIn: 'root'})
 export class StudentService {
@@ -80,5 +81,16 @@ export class StudentService {
   // Select Teacher
   getTeacherSelect(): Observable<SearchTeacher>{
     return this.http.get<SearchTeacher>(`${this.apiUrl}/teacher`);
+  }
+
+  // Method Post Agregar un student
+  addStudent(student: StudentForm): Observable<StudentForm>{
+    return this.http.post<StudentForm>(`${this.apiUrl}/student`, student);
+  }
+
+  // Method Update Actualizar un student
+  updateStudent(student: StudentForm): Observable<StudentForm>{
+    if (!student.id) throw Error("Student id is required");
+    return this.http.patch<StudentForm>(`${this.apiUrl}/student/${student.id}`, student);
   }
 }
