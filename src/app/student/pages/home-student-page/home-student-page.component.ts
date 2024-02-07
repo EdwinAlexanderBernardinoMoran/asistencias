@@ -15,6 +15,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
   public isLoading: boolean = false;
   public displayedColumns: string[] = ['id', 'names', 'lastnames', 'nie', 'incomeSpecialty', 'acciones'];
   public student: MatTableDataSource<Student>;
+  public pdf = "http://backendinso.test/api/v1/pdf/student/"
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

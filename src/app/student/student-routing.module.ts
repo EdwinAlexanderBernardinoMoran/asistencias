@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CreateStudentPageComponent } from './pages/create-student-page/create-student-page.component';
 import { HomeStudentPageComponent } from './pages/home-student-page/home-student-page.component';
-import { EditStudentPageComponent } from './pages/edit-student-page/edit-student-page.component';
 import { LayoutAdminComponent } from '../admin/layout-admin/layout-admin.component';
 
 const routes: Routes = [
@@ -20,8 +19,8 @@ const routes: Routes = [
         component: HomeStudentPageComponent
       },
       {
-        path: 'student/:id',
-        component: EditStudentPageComponent
+        path: 'edit/:id',
+        component: CreateStudentPageComponent
       },
       {
         path: '**',

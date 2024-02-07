@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Nationality, SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
 import { StudentService } from '../../services/student.service';
 import { Department, SearchDepartment } from 'src/app/department/interfaces/department.interface';
@@ -9,15 +13,9 @@ import { SearchSpecialty, Specialty } from 'src/app/specialty/interfaces/special
 import { SchoolCenter, SearchSchoolCenter } from 'src/app/school-center/interfaces/school_center.interface';
 import { SearchZone, Zone } from 'src/app/zone/interfaces/zone.interface';
 import { Canton, SearchCanton } from 'src/app/canton/interfaces/canton.interface';
-import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
+import { Hamlet, SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher, Teacher } from 'src/app/teacher/interfaces/teacher.interface';
-import { DatePipe } from '@angular/common';
-
-
-export interface Hamlet{
-  id: number,
-  name: string,
-}
+import { Data, StudentForm } from '../../interfaces/student-create.interface';
 
 @Component({
   selector: 'student-create-student-page',
@@ -28,6 +26,8 @@ export interface Hamlet{
 
 
 export class CreateStudentPageComponent implements OnInit{
+
+  public student?:Data;
 
   public nationalities: Nationality[] = [];
   public departments: Department[] = [];
@@ -40,7 +40,112 @@ export class CreateStudentPageComponent implements OnInit{
   public hamlets: Hamlet[] = [];
   public teachers: Teacher[] = [];
 
-  constructor(private studentService: StudentService){}
+  public title:string = "Instituto Nacional De Sonzacate";
+  public ficha:string = "Ficha De Matricula";
+  public customDate:Date = new Date();
+
+  hide = true;
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  public studentForm = new FormGroup({
+    id: new FormControl(),
+    names: new FormControl(''),
+    lastnames: new FormControl(''),
+    dateBirth: new FormControl(''),
+    nationality_id: new FormControl(),
+    departmentBirth_id: new FormControl(),
+    municipalityBirth_id: new FormControl(),
+    yearStudy: new FormControl(''),
+    nie: new FormControl(''),
+    departureNumber: new FormControl(''),
+    departureFolio: new FormControl(''),
+    departureBook: new FormControl(''),
+    anotherIdentificationDocument: new FormControl(''),
+    salvadoreno_por: new FormControl(''),
+    incomeSpecialty_id: new FormControl(),
+    parvularianStudy: new FormControl(''),
+    repeatSection: new FormControl(''),
+    school_center_id: new FormControl(),
+    previousYear: new FormControl(),
+    bloodType: new FormControl(''),
+    sexo: new FormControl(''),
+    stateFamiliar: new FormControl(''),
+    disability: new FormControl(''),
+    email: new FormControl(''),
+    telephone: new FormControl(''),
+    zone_id: new FormControl(),
+    departmentResidence_id: new FormControl(),
+    municipalityResidence_id: new FormControl(),
+    cantonResidence_id: new FormControl(),
+    hamletResidence_id: new FormControl(),
+    streetType: new FormControl(''),
+    fullAddress: new FormControl(''),
+    middleTransport: new FormControl(''),
+    distanceFromHomeSchool: new FormControl(''),
+    riskFactor: new FormControl(''),
+    numberMembersFamily: new FormControl(),
+    integrated: new FormControl(),
+    dependsEconomically: new FormControl(''),
+    hasChildren: new FormControl(),
+    numberChildren: new FormControl(''),
+    work: new FormControl(),
+    coexistenceWith: new FormControl(''),
+    mothersName: new FormControl(''),
+    occupationMother: new FormControl(''),
+    workplaceOfTheMother: new FormControl(''),
+    mothersPhone: new FormControl(''),
+    fathersName: new FormControl(''),
+    occupationFather: new FormControl(''),
+    workplaceOfTheFather: new FormControl(''),
+    fathersPhone: new FormControl(''),
+    ResponsibleNames: new FormControl(''),
+    ResponsibleLastNames: new FormControl(''),
+    DuiResponsible: new FormControl(''),
+    familyStateResponsible: new FormControl(''),
+    emailResponsible: new FormControl(''),
+    phoneResponsible: new FormControl(''),
+    zoneReponsible_id: new FormControl(),
+    departmentReponsible_id: new FormControl(),
+    municipalityReponsible_id: new FormControl(),
+    cantonReponsible_id: new FormControl(),
+    hamletReponsible_id: new FormControl(),
+    streetTypeReponsible: new FormControl(''),
+    fullAddressResponsible: new FormControl(''),
+    professionIfficeResponsible: new FormControl(''),
+    responsibleSchool: new FormControl(''),
+    riskFactorResponsable: new FormControl(''),
+    dateReviewForm: new FormControl(''),
+    birthCertificate: new FormControl(),
+    certificationNotes: new FormControl(),
+    certificate: new FormControl(),
+    photos: new FormControl(),
+    RecordNotes: new FormControl(),
+    residentCard: new FormControl(),
+    teacher_id: new FormControl(),
+  });
+
+  public yearStudies = [
+    {id: '1', yearStudy: '1° Año'},
+    {id: '2', yearStudy: '2° Año'},
+    {id: '3', yearStudy: '3° Año'}
+  ]
+
+  public selects = [
+    {id: 1, name: 'SI'},
+    {id: 0, name: 'NO'}
+  ]
+
+  constructor(
+    private studentService: StudentService,
+    private activateRoute: ActivatedRoute,
+    private router: Router
+  ){}
+
+  get currentStudent(): StudentForm {
+    const student = this.studentForm.value as StudentForm
+    return student;
+  }
 
   ngOnInit(): void {
 
@@ -114,91 +219,22 @@ export class CreateStudentPageComponent implements OnInit{
       }
     )
 
+    if (!this.router.url.includes('edit')) return
+
+    // Obteniendo id por ruta y haciendo validacion si es post o put
+    this.activateRoute.params.pipe(
+      switchMap(({id}) => this.studentService.getStudentById(id))
+    ).subscribe(
+      data => {
+        console.log(data?.data);
+        if(!data?.data) return this.router.navigateByUrl('/')
+        this.studentForm.reset(data?.data)
+        return
+
+      }
+    )
+
   }
-
-  public title:string = "Instituto Nacional De Sonzacate";
-  public ficha:string = "Ficha De Matricula";
-  public customDate:Date = new Date();
-
-  hide = true;
-
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  public studentForm = new FormGroup({
-    names: new FormControl(''),
-    lastnames: new FormControl(''),
-    dateBirth: new FormControl(''),
-    nationality_id: new FormControl(''),
-    departmentBirth_id: new FormControl(''),
-    municipalityBirth_id: new FormControl(''),
-    yearStudy: new FormControl(''),
-    nie: new FormControl(''),
-    departureNumber: new FormControl(''),
-    departureFolio: new FormControl(''),
-    departureBook: new FormControl(''),
-    anotherIdentificationDocument: new FormControl(''),
-    salvadoreno_por: new FormControl(''),
-    incomeSpecialty_id: new FormControl(''),
-    parvularianStudy: new FormControl(''),
-    repeatSection: new FormControl(''),
-    school_center_id: new FormControl(''),
-    previousYear: new FormControl(''),
-    bloodType: new FormControl(''),
-    sexo: new FormControl(''),
-    stateFamiliar: new FormControl(''),
-    disability: new FormControl(''),
-    email: new FormControl(''),
-    telephone: new FormControl(''),
-    zone_id: new FormControl(''),
-    departmentResidence_id: new FormControl(''),
-    municipalityResidence_id: new FormControl(''),
-    cantonResidence_id: new FormControl(''),
-    hamletResidence_id: new FormControl(''),
-    streetType: new FormControl(''),
-    fullAddress: new FormControl(''),
-    middleTransport: new FormControl(''),
-    distanceFromHomeSchool: new FormControl(''),
-    riskFactor: new FormControl(''),
-    numberMembersFamily: new FormControl(''),
-    integrated: new FormControl(''),
-    dependsEconomically: new FormControl(''),
-    hasChildren: new FormControl(''),
-    numberChildren: new FormControl(''),
-    work: new FormControl(''),
-    coexistenceWith: new FormControl(''),
-    mothersName: new FormControl(''),
-    occupationMother: new FormControl(''),
-    workplaceOfTheMother: new FormControl(''),
-    mothersPhone: new FormControl(''),
-    fathersName: new FormControl(''),
-    occupationFather: new FormControl(''),
-    workplaceOfTheFather: new FormControl(''),
-    fathersPhone: new FormControl(''),
-    ResponsibleNames: new FormControl(''),
-    ResponsibleLastNames: new FormControl(''),
-    DuiResponsible: new FormControl(''),
-    familyStateResponsible: new FormControl(''),
-    emailResponsible: new FormControl(''),
-    phoneResponsible: new FormControl(''),
-    zoneReponsible_id: new FormControl(''),
-    departmentReponsible_id: new FormControl(''),
-    municipalityReponsible_id: new FormControl(''),
-    cantonReponsible_id: new FormControl(''),
-    hamletReponsible_id: new FormControl(''),
-    streetTypeReponsible: new FormControl(''),
-    fullAddressResponsible: new FormControl(''),
-    professionIfficeResponsible: new FormControl(''),
-    responsibleSchool: new FormControl(''),
-    riskFactorResponsable: new FormControl(''),
-    dateReviewForm: new FormControl(''),
-    birthCertificate: new FormControl(''),
-    certificationNotes: new FormControl(''),
-    certificate: new FormControl(''),
-    photos: new FormControl(''),
-    RecordNotes: new FormControl(''),
-    residentCard: new FormControl(''),
-    teacher_id: new FormControl(''),
-  });
 
   // Formatea la fecha.
   setDateForm(input: string):void {
@@ -207,12 +243,25 @@ export class CreateStudentPageComponent implements OnInit{
     this.studentForm.get(input)?.setValue(newfecha);
   }
 
-
-
   onSubmit():void {
+
+    if (this.studentForm.invalid) return;
 
     this.setDateForm('dateBirth');
     this.setDateForm('dateReviewForm');
+
+    if (this.currentStudent.id) {
+      this.studentService.updateStudent(this.currentStudent).subscribe(
+        student => {
+          this.router.navigate(['/students/list'])
+        }
+      );
+      return
+    }
+
+    this.studentService.addStudent(this.currentStudent).subscribe(student => {
+
+    })
 
     console.log({
       formIsValid: this.studentForm.valid,

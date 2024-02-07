@@ -1,6 +1,6 @@
 <div class="container-two">
   <h1 align="center">{{title}}</h1>
-  <h2 align="center">{{ficha}} {{customDate | date:'yyyy'}}</h2>
+  <h2 align="center">{{ currentStudent.id ? 'Actualizando': 'Creando' }} {{ficha}} {{customDate | date:'yyyy'}}</h2>
 
   <mat-tab-group>
 
@@ -82,7 +82,7 @@
           <mat-form-field>
             <mat-label>Año De Bachillerato</mat-label>
             <mat-select formControlName="yearStudy">
-              <mat-option *ngFor="let section of sections" [value]="section.id">{{ section.name }}</mat-option>
+              <mat-option *ngFor="let yearStudy of yearStudies" [value]="yearStudy.id">{{ yearStudy.yearStudy }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>local_library</mat-icon>
           </mat-form-field>
@@ -441,8 +441,7 @@
           <mat-form-field>
             <mat-label>Integrados:</mat-label>
             <mat-select formControlName="integrated">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let integrate of selects" [value]="integrate.id">{{ integrate.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
           </mat-form-field>
@@ -470,8 +469,7 @@
           <mat-form-field>
             <mat-label>Tiene Hijos:</mat-label>
             <mat-select formControlName="hasChildren">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let children of selects" [value]="children.id">{{ children.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>group</mat-icon>
           </mat-form-field>
@@ -491,8 +489,7 @@
           <mat-form-field>
             <mat-label>Trabaja:</mat-label>
             <mat-select formControlName="work">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let work of selects" [value]="work.id">{{ work.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>group</mat-icon>
           </mat-form-field>
@@ -821,8 +818,7 @@
           <mat-form-field>
             <mat-label>Partida De Nacimiento:</mat-label>
             <mat-select formControlName="birthCertificate">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let birthCertificate of selects" [value]="birthCertificate.id">{{ birthCertificate.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -833,8 +829,7 @@
           <mat-form-field>
             <mat-label>Certificacion De Notas:</mat-label>
             <mat-select formControlName="certificationNotes">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let certificationNotes of selects" [value]="certificationNotes.id">{{ certificationNotes.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -845,8 +840,7 @@
           <mat-form-field>
             <mat-label>Certificado:</mat-label>
             <mat-select formControlName="certificate">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let certificate of selects" [value]="certificate.id">{{ certificate.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -859,8 +853,7 @@
           <mat-form-field>
             <mat-label>Fotos:</mat-label>
             <mat-select formControlName="photos">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let photos of selects" [value]="photos.id">{{ photos.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -883,8 +876,7 @@
           <mat-form-field>
             <mat-label>Constancia De Conducta:</mat-label>
             <mat-select formControlName="RecordNotes">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let recordNote of selects" [value]="recordNote.id">{{ recordNote.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>
@@ -895,8 +887,7 @@
           <mat-form-field>
             <mat-label>Carnet Residente:</mat-label>
             <mat-select formControlName="residentCard">
-              <mat-option value="1">SI</mat-option>
-              <mat-option value="0">NO</mat-option>
+              <mat-option *ngFor="let residentCard of selects" [value]="residentCard.id">{{ residentCard.name }}</mat-option>
             </mat-select>
             <mat-icon matSuffix>blur_on</mat-icon>
           </mat-form-field>

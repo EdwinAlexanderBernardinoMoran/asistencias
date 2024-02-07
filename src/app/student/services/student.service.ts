@@ -12,7 +12,7 @@ import { SearchZone } from 'src/app/zone/interfaces/zone.interface';
 import { SearchCanton } from 'src/app/canton/interfaces/canton.interface';
 import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher } from 'src/app/teacher/interfaces/teacher.interface';
-import { StudentForm } from '../interfaces/student-create.interface';
+import { Data, StudentForm } from '../interfaces/student-create.interface';
 
 @Injectable({providedIn: 'root'})
 export class StudentService {
@@ -27,8 +27,8 @@ export class StudentService {
     );
   }
 
-  getStudentById(id: string): Observable<Student | undefined>{
-    return this.http.get<Student>(`${this.apiUrl}/student/${id}`).pipe(
+  getStudentById(id: string): Observable<Data | undefined>{
+    return this.http.get<Data>(`${this.apiUrl}/student/${id}`).pipe(
       catchError(error => of(undefined))
     )
   }
