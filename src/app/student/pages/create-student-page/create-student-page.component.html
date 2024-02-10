@@ -2,6 +2,10 @@
   <h1 align="center">{{title}}</h1>
   <h2 align="center">{{ currentStudent.id ? 'Actualizando': 'Creando' }} {{ficha}} {{customDate | date:'yyyy'}}</h2>
 
+  <button mat-fab color="primary" [routerLink]="['/students/list']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
   <mat-tab-group>
 
     <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">

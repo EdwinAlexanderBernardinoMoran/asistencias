@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, delay, of } from 'rxjs';
+import { Observable, catchError, delay, map, of } from 'rxjs';
 import { SearchStudent, Student } from '../interfaces/student.interface';
 import { Nationality, SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
 import { SearchDepartment } from 'src/app/department/interfaces/department.interface';
@@ -92,5 +92,14 @@ export class StudentService {
   updateStudent(student: StudentForm): Observable<StudentForm>{
     if (!student.id) throw Error("Student id is required");
     return this.http.patch<StudentForm>(`${this.apiUrl}/student/${student.id}`, student);
+  }
+
+  // Eliminar un Estudiante
+  deleteStudent(id: number): Observable<boolean>{
+    if (!id) throw Error("Hero id is required");
+    return this.http.delete(`${this.apiUrl}/student/${id}`).pipe(
+      map(response => true),
+      catchError( error => of(false)),
+    );
   }
 }

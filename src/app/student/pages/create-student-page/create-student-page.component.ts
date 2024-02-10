@@ -16,6 +16,7 @@ import { Canton, SearchCanton } from 'src/app/canton/interfaces/canton.interface
 import { Hamlet, SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher, Teacher } from 'src/app/teacher/interfaces/teacher.interface';
 import { Data, StudentForm } from '../../interfaces/student-create.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'student-create-student-page',
@@ -139,7 +140,8 @@ export class CreateStudentPageComponent implements OnInit{
   constructor(
     private studentService: StudentService,
     private activateRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ){}
 
   get currentStudent(): StudentForm {
@@ -253,14 +255,16 @@ export class CreateStudentPageComponent implements OnInit{
     if (this.currentStudent.id) {
       this.studentService.updateStudent(this.currentStudent).subscribe(
         student => {
-          this.router.navigate(['/students/list'])
+
+          this.router.navigate(['/students/list']);
+          this.showSnackbar(`${this.currentStudent.names} fue Actualizado Correctamente!`)
         }
       );
       return
     }
 
     this.studentService.addStudent(this.currentStudent).subscribe(student => {
-
+      this.showSnackbar(`${this.currentStudent.names} fue Creado Exitosamente!`)
     })
 
     console.log({
@@ -268,5 +272,11 @@ export class CreateStudentPageComponent implements OnInit{
       value: this.studentForm.value
     });
 
+  }
+
+  showSnackbar(message: string): void{
+    this.snackbar.open(message, 'done', {
+      duration: 3000
+    })
   }
 }

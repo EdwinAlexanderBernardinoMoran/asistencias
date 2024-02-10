@@ -4,6 +4,8 @@
     <h1 align="center">{{title}}</h1>
   </div>
 
+  <button mat-raised-button color="primary" class="mb-4" [routerLink]="['/students/new-student']">Agregar Alumno +</button>
+
   <mat-form-field>
     <mat-label>Busca por nombres, apellidos, nie y especialidad</mat-label>
     <input matInput  placeholder="Edwin Bernardino, 814892, Desarrollo De Software" #input>
@@ -53,7 +55,7 @@
         <button mat-mini-fab color="primary" [routerLink]="['/students/edit', element.id]">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon">
+        <button mat-mini-fab color="warn" (click)="OnDelete(element.id, element.names)">
           <mat-icon>delete</mat-icon>
         </button>
 

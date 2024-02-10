@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HomeStudentPageComponent,
     CreateStudentPageComponent,
-    TableStudentComponent
+    TableStudentComponent,
   ],
   imports: [
     CommonModule,
