@@ -1,47 +1,49 @@
-<div class="container">
-  <div class="row">
-    <h3 class="center">Departamentos</h3>
-  </div>
+<div class="container-two">
+  <h1 align="center">{{ title }}</h1>
+  <h2 align="center">{{ currentDepartment.id ? 'Actualizando': 'Creando' }}</h2>
 
-  <div class="row">
-    <form action="" class="col s12">
-      <div class="section">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">account_circle</i>
-            <label for="Primer_nombre">Nombre del Departamento:
-            <input type="text" name="name" placeholder="Nombre del Departamento"></label>
-          </div>
-        </div>
+  <button mat-fab color="primary" [routerLink]="['/departments/list']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <div class="container-three">
+
+    <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+    <div class="flex">
+      <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+        <mat-form-field>
+          <mat-label>Nombres</mat-label>
+          <input type="text" matInput placeholder="Nombres" formControlName="name">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
       </div>
-
-      <div class="section p">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">group</i>
-            <select name="sexo">
-              <option value="" disabled selected>Elija una opcion</option>
-              <option value="0">Habilitado</option>
-              <option value="1">Inabilitado</option>
-            </select>
-            <label>Sexo:</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="section p">
-        <div class="row">
-            <div class="input-field col s12 center-align">
-                <button class="btn blue darken-1 waves-effect waves-light" type="submit" name="action">Enviar
-                <i class="material-icons right">send</i>
-                </button>
-                |
-                <a href="#" class="btn waves-effect waves-light red"><i class="material-icons right">arrow_back</i>Volver</a>
-
-            </div>
-        </div>
     </div>
 
-    </form>
+    <div class="flex">
+      <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let statu of status" [value]="statu.id">
+              {{ statu.name }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>people</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+        <button mat-raised-button>
+          <mat-icon matSuffix>send</mat-icon>
+          {{ currentDepartment.id ? 'Actualizar': 'Enviar' }} Datos
+        </button>
+      </div>
+    </div>
+
+  </form>
+
   </div>
+
 </div>

@@ -96,7 +96,7 @@ export class StudentService {
 
   // Eliminar un Estudiante
   deleteStudent(id: number): Observable<boolean>{
-    if (!id) throw Error("Hero id is required");
+    if (!id) throw Error("Student id is required");
     return this.http.delete(`${this.apiUrl}/student/${id}`).pipe(
       map(response => true),
       catchError( error => of(false)),

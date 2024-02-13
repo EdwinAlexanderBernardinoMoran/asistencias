@@ -19,6 +19,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   max-width: 1650px;
 }
 
+.container-three{
+  margin: auto;
+  padding: 45px 0;
+  width: 100%;
+  max-width: 550px;
+}
+
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;

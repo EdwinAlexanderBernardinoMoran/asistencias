@@ -13,7 +13,7 @@ const TREE_DATA: FoodNode[] = [
   // Alumnos
   {
     name: 'Alumnos',
-    children: [{name: 'Listado', url: './list', icon: 'assignment_ind'}, {name: 'Nuevo', url: './new-student', icon: 'person_add'}, {name: 'Codigo De Barras', url: '', icon: 'assessment'}],
+    children: [{name: 'Listado', url: '/students/list', icon: 'assignment_ind'}, {name: 'Nuevo', url: '/students/new-student', icon: 'person_add'}, {name: 'Codigo De Barras', url: '', icon: 'assessment'}],
   },
 
   // Matriculas
@@ -37,7 +37,7 @@ const TREE_DATA: FoodNode[] = [
   // Mantenimientos
   {
     name: 'Mantenimientos',
-    children: [{name: 'Nacionalidad', url: '', icon: 'accessibility'}, {name: 'Departamento', url: '', icon: 'my_location'}, {name: 'Municipio', url: '', icon: 'person_pin_circle'}, {name: 'Cantones', url: '', icon: 'room'}, {name: 'Caserios', url: '', icon: 'account_balance'}, {name: 'Zona', url: '', icon: 'pin_drop'}, {name: 'Especialidad', url: '', icon: 'school'}, {name: 'Secciones', url: '', icon: 'book'}, {name: 'Centro Escolar', url: '', icon: 'business'}]
+    children: [{name: 'Nacionalidad', url: '', icon: 'accessibility'}, {name: 'Departamento', url: '/departments/list', icon: 'my_location'}, {name: 'Municipio', url: '', icon: 'person_pin_circle'}, {name: 'Cantones', url: '', icon: 'room'}, {name: 'Caserios', url: '', icon: 'account_balance'}, {name: 'Zona', url: '', icon: 'pin_drop'}, {name: 'Especialidad', url: '', icon: 'school'}, {name: 'Secciones', url: '', icon: 'book'}, {name: 'Centro Escolar', url: '', icon: 'business'}]
   }
 ];
 

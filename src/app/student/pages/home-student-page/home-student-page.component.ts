@@ -15,7 +15,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
 
   public title:string = "Listado De Estudiantes";
   public isLoading: boolean = false;
-  public displayedColumns: string[] = ['id', 'names', 'lastnames', 'nie', 'incomeSpecialty', 'acciones'];
+  public displayedColumns: string[] = ['id', 'names', 'lastnames', 'nie', 'incomeSpecialty', 'created_at','acciones'];
   public student: MatTableDataSource<Student>;
   public pdf = "http://backendinso.test/api/v1/pdf/student/"
 
@@ -48,7 +48,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
 
   OnDelete(id: number, names: string):void {
 
-    if (!id) throw Error('Hero id is required')
+    if (!id) throw Error('Student id is required')
 
     Swal.fire({
       title: `Estas seguro de eliminar a ${names}`,
@@ -95,12 +95,6 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
   //       this.isLoading = false;
   //     }
   //   );
-  // }
-
-  // showSnackbar(message: string): void{
-  //   this.snackbar.open(message, 'done', {
-  //     duration: 3000
-  //   })
   // }
 
 }

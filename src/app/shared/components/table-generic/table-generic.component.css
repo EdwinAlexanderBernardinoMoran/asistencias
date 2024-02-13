@@ -1,20 +1,12 @@
-.green{
-  background-color: greenyellow;
-}
-
 .mat-column-id {
   text-align: center;
 }
 
-.mat-column-names {
+.mat-column-name {
   text-align: center;
 }
 
-.mat-column-lastnames {
-  text-align: center;
-}
-
-.mat-column-incomeSpecialty {
+.mat-column-status {
   text-align: center;
 }
 

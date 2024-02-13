@@ -1,15 +1,16 @@
-<div class="row">
-  <h4 class="center-align">DEPARTAMENTOS</h4>
-  <a routerLink="/department/create-department" class="btn green accent-4 spacing" title="Agregar Departamento">Agregar departamento +</a>
+<div class="container">
+  <div class="row">
+    <h1 align="center">{{ title }}</h1>
+  </div>
+
+  <button mat-raised-button color="primary" class="mb-4" [routerLink]="['/departments/new-department']">Agregar Departamento +</button>
+
+  <table-generic [data]="department" [navegacion]="urlDepartment" (onDelete)="OnDelete($event)"></table-generic>
+
+  <shared-loader *ngIf="isLoading"></shared-loader>
 </div>
 
-<form action="">
-
-  <select name="" id="">
-    <option value="">adsfas</option>
-  </select>
-</form>
-
-<div class="row">
+<!-- <div class="row">
   <table-department [departments]="departments"></table-department>
-</div>
+</div> -->
+
