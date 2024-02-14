@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ListStudentPageComponent } from './list-student-page.component';
 
-import { HomeStudentPageComponent } from './home-student-page.component';
 
 describe('HomeStudentPageComponent', () => {
-  let component: HomeStudentPageComponent;
-  let fixture: ComponentFixture<HomeStudentPageComponent>;
+  let component: ListStudentPageComponent;
+  let fixture: ComponentFixture<ListStudentPageComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeStudentPageComponent]
+      declarations: [ListStudentPageComponent]
     });
-    fixture = TestBed.createComponent(HomeStudentPageComponent);
+    fixture = TestBed.createComponent(ListStudentPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

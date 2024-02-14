@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateDepartmentPageComponent } from './pages/create-department-page/create-department-page.component';
-import { HomeDepartmentPageComponent } from './pages/home-department-page/home-department-page.component';
+import { ListDepartmentPageComponent } from './pages/list-department-page/list-department-page.component';
 import { LayoutAdminComponent } from '../admin/layout-admin/layout-admin.component';
+import { CreateEditDepartmentPageComponent } from './pages/create-edit-department-page/create-edit-department-page.component';
 
 const routes: Routes = [
   {
@@ -11,15 +11,15 @@ const routes: Routes = [
     children: [
       {
         path: 'new-department',
-        component: CreateDepartmentPageComponent
+        component: CreateEditDepartmentPageComponent
       },
       {
         path: 'list',
-        component: HomeDepartmentPageComponent
+        component: ListDepartmentPageComponent
       },
       {
         path: 'edit/:id',
-        component: CreateDepartmentPageComponent
+        component: CreateEditDepartmentPageComponent
       }
     ]
   }

@@ -1,17 +1,18 @@
 import {Component, OnInit } from '@angular/core';
-import { DepartmentsService } from '../../service/department.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DepartmentForm } from '../../interfaces/department-create.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 
+import { DepartmentsService } from '../../service/department.service';
+import { DepartmentForm } from '../../interfaces/department-create.interface';
+
 @Component({
   selector: 'app-create-department-page',
-  templateUrl: './create-department-page.component.html',
-  styleUrls: ['./create-department-page.component.css']
+  templateUrl: './create-edit-department-page.component.html',
+  styleUrls: ['./create-edit-department-page.component.css']
 })
-export class CreateDepartmentPageComponent implements OnInit{
+export class CreateEditDepartmentPageComponent implements OnInit{
 
   public title: string = "Departamento";
   public status = [

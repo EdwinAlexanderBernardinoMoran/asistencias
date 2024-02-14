@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CreateStudentPageComponent } from './pages/create-student-page/create-student-page.component';
-import { HomeStudentPageComponent } from './pages/home-student-page/home-student-page.component';
+
 import { LayoutAdminComponent } from '../admin/layout-admin/layout-admin.component';
+import { CreateEditStudentPageComponent } from './pages/create-edit-student-page/create-edit-student-page.component';
+import { ListStudentPageComponent } from './pages/list-student-page/list-student-page.component';
 
 const routes: Routes = [
   {
@@ -12,15 +13,15 @@ const routes: Routes = [
     children: [
       {
         path: 'new-student',
-        component: CreateStudentPageComponent
+        component: CreateEditStudentPageComponent
       },
       {
         path: 'list',
-        component: HomeStudentPageComponent
+        component: ListStudentPageComponent
       },
       {
         path: 'edit/:id',
-        component: CreateStudentPageComponent
+        component: CreateEditStudentPageComponent
       },
       {
         path: '**',

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, delay, map, of } from 'rxjs';
-import { SearchStudent, Student } from '../interfaces/student.interface';
-import { Nationality, SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
+
+import { SearchStudent } from '../interfaces/student.interface';
+import { SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
 import { SearchDepartment } from 'src/app/department/interfaces/department.interface';
 import { SearchMunicipality } from 'src/app/municipality/interfaces/municipality.interface';
 import { SearchSection } from 'src/app/section/interfaces/section.interface';
@@ -20,18 +21,6 @@ export class StudentService {
   private apiUrl:string = 'http://backendinso.test/api/v1';
 
   constructor(private http: HttpClient) { }
-
-  getStudent(): Observable<SearchStudent>{
-    return this.http.get<SearchStudent>(`${this.apiUrl}/student`).pipe(
-      delay(1000)
-    );
-  }
-
-  getStudentById(id: string): Observable<Data | undefined>{
-    return this.http.get<Data>(`${this.apiUrl}/student/${id}`).pipe(
-      catchError(error => of(undefined))
-    )
-  }
 
   // Select Nationality
   getNationalitySelect(): Observable<SearchNationality>{
@@ -81,6 +70,20 @@ export class StudentService {
   // Select Teacher
   getTeacherSelect(): Observable<SearchTeacher>{
     return this.http.get<SearchTeacher>(`${this.apiUrl}/teacher`);
+  }
+
+  // Obtiene todos los estudiantes
+  getStudent(): Observable<SearchStudent>{
+    return this.http.get<SearchStudent>(`${this.apiUrl}/student`).pipe(
+      delay(1000)
+    );
+  }
+
+  // Obtiene estudiante por su id
+  getStudentById(id: string): Observable<Data | undefined>{
+    return this.http.get<Data>(`${this.apiUrl}/student/${id}`).pipe(
+      catchError(error => of(undefined))
+    )
   }
 
   // Method Post Agregar un student

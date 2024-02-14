@@ -32,7 +32,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
+  margin: 8px 8px 8px 10px;
 }
 
 .mat-table {

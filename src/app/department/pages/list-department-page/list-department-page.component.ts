@@ -7,11 +7,11 @@ import { Department } from '../../interfaces/department.interface';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'home-department-page',
-  templateUrl: './home-department-page.component.html',
-  styleUrls: ['./home-department-page.component.css']
+  selector: 'list-department-page',
+  templateUrl: './list-department-page.component.html',
+  styleUrls: ['./list-department-page.component.css']
 })
-export class HomeDepartmentPageComponent implements OnInit{
+export class ListDepartmentPageComponent implements OnInit{
 
   public title:string = "Listado De Departamentos";
   public department: MatTableDataSource<Information>;
@@ -19,14 +19,14 @@ export class HomeDepartmentPageComponent implements OnInit{
   public isLoading: boolean = false;
 
   constructor(
-    private serviceDepartment: DepartmentsService
+    private departmentService: DepartmentsService
   ){
     this.department = new MatTableDataSource()
   }
 
   ngOnInit(): void {
     this.isLoading = true
-    this.serviceDepartment.getDepartment().subscribe(
+    this.departmentService.getDepartment().subscribe(
       (response: SearchInformation) => {
         // console.log(response.data);
         this.department.data = response.data
@@ -52,7 +52,7 @@ export class HomeDepartmentPageComponent implements OnInit{
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.serviceDepartment.deleteDepartment(data.id).subscribe(
+        this.departmentService.deleteDepartment(data.id).subscribe(
           () => {
             this.department.data = this.department.data.filter((department: Department) => department.id !== data.id)
 

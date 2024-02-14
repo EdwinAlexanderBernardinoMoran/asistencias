@@ -27,7 +27,7 @@ export class CreateEditNationalityPageComponent implements OnInit{
   });
 
   constructor(
-    private serviceNationality: NationalityService,
+    private nationalityService: NationalityService,
     private activateRoute: ActivatedRoute,
     private router: Router,
     private snackbar: MatSnackBar
@@ -42,7 +42,7 @@ export class CreateEditNationalityPageComponent implements OnInit{
     if (!this.router.url.includes('edit')) return
 
     this.activateRoute.params.pipe(
-      switchMap(({id}) => this.serviceNationality.getNationalityById(id))
+      switchMap(({id}) => this.nationalityService.getNationalityById(id))
     ).subscribe(
       data => {
         // console.log(data?.data);
@@ -57,7 +57,7 @@ export class CreateEditNationalityPageComponent implements OnInit{
     if (this.nationalityForm.invalid) return
 
     if (this.currentNationality.id) {
-      this.serviceNationality.updateNationality(this.currentNationality).subscribe(
+      this.nationalityService.updateNationality(this.currentNationality).subscribe(
         nationality => {
           this.router.navigate(['/nationalities/list']);
           this.showSnackbar(`${this.currentNationality.name} Actualizado Correctamente`)
@@ -66,7 +66,7 @@ export class CreateEditNationalityPageComponent implements OnInit{
       return
     }
 
-    this.serviceNationality.addNationality(this.currentNationality).subscribe(
+    this.nationalityService.addNationality(this.currentNationality).subscribe(
       nationality => {
         this.router.navigate(['/nationalities/list']);
         this.showSnackbar(`${this.currentNationality.name} fue creada Exitosamente!`);

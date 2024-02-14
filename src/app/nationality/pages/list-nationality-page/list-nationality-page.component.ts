@@ -20,14 +20,14 @@ export class ListNationalityPageComponent implements OnInit{
   public isLoading: boolean = false;
 
   constructor(
-    private serviceNationality: NationalityService
+    private nationalityService: NationalityService
   ){
     this.nationality = new MatTableDataSource()
   }
 
   ngOnInit(): void {
     this.isLoading = true
-    this.serviceNationality.getNationality().subscribe(
+    this.nationalityService.getNationality().subscribe(
       (response: SearchNationality) => {
         // console.log(response);
         this.nationality.data = response.data
@@ -50,7 +50,7 @@ export class ListNationalityPageComponent implements OnInit{
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.serviceNationality.deleteNationality(data.id).subscribe(
+        this.nationalityService.deleteNationality(data.id).subscribe(
           () => {
             this.nationality.data = this.nationality.data.filter((nationality: Nationality) => nationality.id !== data.id)
 

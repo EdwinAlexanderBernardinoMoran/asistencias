@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeStudentPageComponent } from './pages/home-student-page/home-student-page.component';
-import { CreateStudentPageComponent } from './pages/create-student-page/create-student-page.component';
-import { TableStudentComponent } from './components/table-student/table-student.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ListStudentPageComponent } from './pages/list-student-page/list-student-page.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { StudentRoutingModule } from './student-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CreateEditStudentPageComponent } from './pages/create-edit-student-page/create-edit-student-page.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeStudentPageComponent,
-    CreateStudentPageComponent,
-    TableStudentComponent,
+    ListStudentPageComponent,
+    CreateEditStudentPageComponent,
   ],
   imports: [
     CommonModule,

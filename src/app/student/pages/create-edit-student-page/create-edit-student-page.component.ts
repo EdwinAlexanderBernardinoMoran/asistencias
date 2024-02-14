@@ -19,14 +19,14 @@ import { Data, StudentForm } from '../../interfaces/student-create.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'student-create-student-page',
-  templateUrl: './create-student-page.component.html',
-  styleUrls: ['./create-student-page.component.css'],
+  selector: 'create-edit-student-page',
+  templateUrl: './create-edit-student-page.component.html',
+  styleUrls: ['./create-edit-student-page.component.css'],
   // standalone: true,
 })
 
 
-export class CreateStudentPageComponent implements OnInit{
+export class CreateEditStudentPageComponent implements OnInit{
 
   public student?:Data;
 

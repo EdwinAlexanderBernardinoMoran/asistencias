@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ListDepartmentPageComponent } from './list-department-page.component';
 
-import { HomeDepartmentPageComponent } from './home-department-page.component';
 
 describe('HomeDepartmentPageComponent', () => {
-  let component: HomeDepartmentPageComponent;
-  let fixture: ComponentFixture<HomeDepartmentPageComponent>;
+  let component: ListDepartmentPageComponent;
+  let fixture: ComponentFixture<ListDepartmentPageComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeDepartmentPageComponent]
+      declarations: [ListDepartmentPageComponent]
     });
-    fixture = TestBed.createComponent(HomeDepartmentPageComponent);
+    fixture = TestBed.createComponent(ListDepartmentPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

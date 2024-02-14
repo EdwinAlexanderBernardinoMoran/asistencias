@@ -8,10 +8,10 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'student-home-student-page',
-  templateUrl: './home-student-page.component.html',
-  styleUrls: ['./home-student-page.component.css'],
+  templateUrl: './list-student-page.component.html',
+  styleUrls: ['./list-student-page.component.css'],
 })
-export class HomeStudentPageComponent implements OnInit, AfterViewInit {
+export class ListStudentPageComponent implements OnInit, AfterViewInit {
 
   public title:string = "Listado De Estudiantes";
   public isLoading: boolean = false;
@@ -23,7 +23,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
   public links: Links | null = null;
 
   constructor(
-    private homeStudent: StudentService,
+    private studentService: StudentService,
   ){
     this.student = new MatTableDataSource()
   }
@@ -33,7 +33,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.homeStudent.getStudent().subscribe(
+    this.studentService.getStudent().subscribe(
       (response: SearchStudent) => {
         this.student.data = response.data
         this.links = response.links;
@@ -61,7 +61,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.homeStudent.deleteStudent(id).subscribe(() => {
+        this.studentService.deleteStudent(id).subscribe(() => {
 
           this.student.data = this.student.data.filter((student: Student) => student.id !== id)
 
@@ -88,7 +88,7 @@ export class HomeStudentPageComponent implements OnInit, AfterViewInit {
 
   // refreshData(): void {
   //   this.isLoading = true;
-  //   this.homeStudent.getStudent().subscribe(
+  //   this.studentService.getStudent().subscribe(
   //     (response: SearchStudent) => {
   //       this.student.data = response.data;
   //       this.links = response.links;
