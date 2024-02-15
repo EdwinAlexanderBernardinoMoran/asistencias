@@ -1,0 +1,46 @@
+<div class="container-two">
+  <h1 align="center">{{ title }}</h1>
+  <h2 align="center">{{ currentMunicipality.id ? 'Actualizando': 'Creando' }}</h2>
+
+  <button mat-fab color="primary" [routerLink]="['/municipalities/list']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <div class="container-three">
+    <form [formGroup]="municipalityForm" (ngSubmit)="onSubmit()">
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Municipality</mat-label>
+            <input type="text" matInput placeholder="Municipality" formControlName="name">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let statu of status" [value]="statu.id">
+                {{ statu.name }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <button mat-raised-button>
+            <mat-icon matSuffix>send</mat-icon>
+            {{ currentMunicipality.id ? 'Actualizar': 'Enviar' }} Datos
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

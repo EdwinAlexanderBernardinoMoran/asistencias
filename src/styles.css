@@ -48,3 +48,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 384px !important;
 }
 
+/* Estilo para la barra de desplazamiento */
+/* WebKit (Safari, Chrome, etc.) */
+::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fdfdfd; /* Color del fondo de la barra de desplazamiento */
+  border-radius: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d4d1d1; /* Color del "mango" de la barra de desplazamiento */
+  border-radius: 6px; /* Borde redondeado del "mango" */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c2c0c0; /* Cambiar color del "mango" al pasar el ratón por encima */
+}
+
+
