@@ -2,7 +2,7 @@
 
 The global attendance control system for admission to the National Institute of Sonzácate. It is coded with Angular version 16.2.2.
 
-![](/src/public/img/asistencias.png)
+![](/src/public/img/asistencias-panel.png)
 
 # Requeriments
 

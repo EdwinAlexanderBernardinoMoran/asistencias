@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./municipality/municipality.module').then(m => m.MunicipalityModule)
   },
   {
+    path: 'cantones',
+    loadChildren: () => import('./canton/canton.module').then(m => m.CantonModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'

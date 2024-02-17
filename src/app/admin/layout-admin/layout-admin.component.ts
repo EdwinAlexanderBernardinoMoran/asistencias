@@ -37,7 +37,7 @@ const TREE_DATA: FoodNode[] = [
   // Mantenimientos
   {
     name: 'Mantenimientos',
-    children: [{name: 'Nacionalidad', url: '/nationalities/list', icon: 'accessibility'}, {name: 'Departamento', url: '/departments/list', icon: 'my_location'}, {name: 'Municipio', url: '/municipalities/list', icon: 'person_pin_circle'}, {name: 'Cantones', url: '', icon: 'room'}, {name: 'Caserios', url: '', icon: 'account_balance'}, {name: 'Zona', url: '', icon: 'pin_drop'}, {name: 'Especialidad', url: '', icon: 'school'}, {name: 'Secciones', url: '', icon: 'book'}, {name: 'Centro Escolar', url: '', icon: 'business'}]
+    children: [{name: 'Nacionalidad', url: '/nationalities/list', icon: 'accessibility'}, {name: 'Departamento', url: '/departments/list', icon: 'my_location'}, {name: 'Municipio', url: '/municipalities/list', icon: 'person_pin_circle'}, {name: 'Cantones', url: '/cantones/list', icon: 'room'}, {name: 'Caserios', url: '', icon: 'account_balance'}, {name: 'Zona', url: '', icon: 'pin_drop'}, {name: 'Especialidad', url: '', icon: 'school'}, {name: 'Secciones', url: '', icon: 'book'}, {name: 'Centro Escolar', url: '', icon: 'business'}]
   }
 ];
 
