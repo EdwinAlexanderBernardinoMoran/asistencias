@@ -23,11 +23,12 @@ export class ListMunicipalityPageComponent implements OnInit{
   constructor(private municipalityService: MunicipalityService){
     this.municipality = new MatTableDataSource()
   }
+
   ngOnInit(): void {
     this.isLoading = true
     this.municipalityService.getMunicipality().subscribe(
       (response: SearchMunicipality) => {
-        console.log(response);
+        // console.log(response);
         this.municipality.data = response.data
         this.isLoading = false
       }

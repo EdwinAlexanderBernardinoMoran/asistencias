@@ -59,7 +59,7 @@ export class CreateEditMunicipalityPageComponent implements OnInit{
       this.municipalityService.updateMunicipality(this.currentMunicipality).subscribe(
         municipality => {
           this.router.navigate(['/municipalities/list']);
-          this.showSnackbar(`${this.currentMunicipality.name} fue Creado Exitosamente`);
+          this.showSnackbar(`${this.currentMunicipality.name} fue Actualizado Exitosamente`);
         }
       )
       return
@@ -68,7 +68,7 @@ export class CreateEditMunicipalityPageComponent implements OnInit{
     this.municipalityService.addMunicipality(this.currentMunicipality).subscribe(
       municipality => {
         this.router.navigate(['/municipalities/list']);
-        this.showSnackbar(`${this.currentMunicipality.name} fue Actualizado Correctamente`)
+        this.showSnackbar(`${this.currentMunicipality.name} fue Creado Correctamente`)
       }
     )
   }

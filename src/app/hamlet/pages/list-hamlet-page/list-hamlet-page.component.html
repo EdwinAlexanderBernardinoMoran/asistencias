@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <h1 align="center">{{ title }}</h1>
+  </div>
+
+  <button mat-raised-button color="primary" class="mb-4" [routerLink]="['/hamlets/new-hamlet']">Agregar Caserio +</button>
+
+  <table-generic [data]="hamlet" [navegacion]="urlHamlet" (onDelete)="onDelete($event)"></table-generic>
+
+  <shared-loader *ngIf="isLoading"></shared-loader>
+</div>
