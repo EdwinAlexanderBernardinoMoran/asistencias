@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./zone/zone.module').then(m => m.ZoneModule)
   },
   {
+    path: 'specialties',
+    loadChildren: () => import('./specialty/specialty.module').then(m => m.SpecialtyModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'
