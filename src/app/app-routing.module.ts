@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./hamlet/hamlet.module').then(m => m.HamletModule)
   },
   {
+    path: 'zones',
+    loadChildren: () => import('./zone/zone.module').then(m => m.ZoneModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'
