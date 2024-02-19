@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./specialty/specialty.module').then(m => m.SpecialtyModule)
   },
   {
+    path: 'sections',
+    loadChildren: () => import('./section/section.module').then(m => m.SectionModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'
