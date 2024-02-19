@@ -32,6 +32,21 @@ export class ListStudentPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    const resultado = this.student.data = this.studentService.cacheStore.student;
+
+    if (resultado.length === 0) {
+      return this.studentDataUpload()
+    }
+
+    this.student.data = resultado;
+
+    // setInterval(() => {
+    //   this.refreshData();
+    // }, 60000);
+  }
+
+  studentDataUpload(){
     this.isLoading = true;
     this.studentService.getStudent().subscribe(
       (response: SearchStudent) => {
@@ -40,10 +55,6 @@ export class ListStudentPageComponent implements OnInit, AfterViewInit {
         this.isLoading = false;
       }
     )
-
-    // setInterval(() => {
-    //   this.refreshData();
-    // }, 60000);
   }
 
   OnDelete(id: number, names: string):void {
