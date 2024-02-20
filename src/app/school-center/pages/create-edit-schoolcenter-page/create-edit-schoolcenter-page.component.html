@@ -1,0 +1,56 @@
+<div class="container-two">
+  <h1 align="center">{{ title }}</h1>
+  <h2 align="center">{{ currentShoolCenter.id ? 'Actualizando': 'Creando' }}</h2>
+
+  <button mat-fab color="primary" [routerLink]="['/schoolcenters/list']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <div class="container-three">
+    <form [formGroup]="schoolCenterForm" (ngSubmit)="onSubmit()">
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Centro Escolar</mat-label>
+            <input type="text" matInput placeholder="Nombre Del Centro Escolar" formControlName="name">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Codigo De Infraestructura</mat-label>
+            <input type="text" matInput placeholder="Escribe el codigo de infraestructura" formControlName="infraestructure_code">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round">
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let statu of status" [value]="statu.id">
+                {{ statu.name }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
+          <button mat-raised-button>
+            <mat-icon matSuffix>send</mat-icon>
+            {{ currentShoolCenter.id ? 'Actualizar': 'Enviar' }} Datos
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
