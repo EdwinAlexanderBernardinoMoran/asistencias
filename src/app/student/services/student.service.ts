@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { Observable, catchError, delay, map, of, tap } from 'rxjs';
 
 import { SearchStudent } from '../interfaces/student.interface';
 import { SearchNationality } from 'src/app/nationality/interfaces/nationality.interface';
@@ -14,13 +14,17 @@ import { SearchCanton } from 'src/app/canton/interfaces/canton.interface';
 import { SearchHamlet } from 'src/app/hamlet/interfaces/hamlet.interface';
 import { SearchTeacher } from 'src/app/teacher/interfaces/teacher.interface';
 import { Data, StudentForm } from '../interfaces/student-create.interface';
+import { CacheStore } from '../interfaces/cache-store.interface';
 
 @Injectable({providedIn: 'root'})
 export class StudentService {
 
   private apiUrl:string = 'http://backendinso.test/api/v1';
 
-  constructor(private http: HttpClient) { }
+  public cacheStore:CacheStore = {
+    student: []
+  }
+  constructor(private http: HttpClient) {}
 
   // Select Nationality
   getNationalitySelect(): Observable<SearchNationality>{
@@ -75,6 +79,7 @@ export class StudentService {
   // Obtiene todos los estudiantes
   getStudent(): Observable<SearchStudent>{
     return this.http.get<SearchStudent>(`${this.apiUrl}/student`).pipe(
+      tap( student => this.cacheStore.student = student.data ),
       delay(1000)
     );
   }
