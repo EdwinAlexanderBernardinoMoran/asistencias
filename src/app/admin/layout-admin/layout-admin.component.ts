@@ -31,7 +31,7 @@ const TREE_DATA: FoodNode[] = [
   // Profesores
   {
     name: 'Profesores',
-    children: [{name: 'Listado', url: '', icon: 'assignment_ind'}, {name: 'Nuevo', url: '', icon: 'person_add'}, {name: 'Cargo Profesores', url: '', icon: 'class'}, {name: 'Categoria Profesores', url: '', icon: 'dns'}, {name: 'Especialidad Profesores', url: '', icon: 'drag_handle'}]
+    children: [{name: 'Listado', url: '', icon: 'assignment_ind'}, {name: 'Nuevo', url: '', icon: 'person_add'}, {name: 'Cargo Profesores', url: '', icon: 'class'}, {name: 'Categoria Profesores', url: '/categories/list', icon: 'dns'}, {name: 'Especialidad Profesores', url: '', icon: 'drag_handle'}]
   },
 
   // Mantenimientos

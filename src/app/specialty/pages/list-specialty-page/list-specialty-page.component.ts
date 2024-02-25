@@ -33,7 +33,7 @@ export class ListSpecialtyPageComponent {
   }
 
   onDelete(data: {id: number, name: string}):void{
-    if(!data.id) throw Error('Hamlet id is required')
+    if(!data.id) throw Error('Specialty id is required')
 
     Swal.fire({
       title: `Estas seguro de eliminar la Especialidad de ${data.name}`,
