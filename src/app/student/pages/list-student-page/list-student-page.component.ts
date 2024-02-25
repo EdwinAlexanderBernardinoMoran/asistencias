@@ -33,9 +33,25 @@ export class ListStudentPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
+    if (this.studentService.createUpdate){
+      console.log('primer mensjae');
+
+      this.studentService.getStudent().subscribe(
+        (response: SearchStudent) => {
+          this.student.data = response.data,
+          this.links = response.links;
+        }
+      )
+    }
+
+    console.log('segundo mensjae');
+
+
     const resultado = this.student.data = this.studentService.cacheStore.student;
 
     if (resultado.length === 0) {
+      console.log('tercer mensjae');
+
       return this.studentDataUpload()
     }
 

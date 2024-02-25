@@ -24,6 +24,8 @@ export class StudentService {
   public cacheStore:CacheStore = {
     student: []
   }
+
+  public createUpdate:boolean = false;
   constructor(private http: HttpClient) {}
 
   // Select Nationality
@@ -80,7 +82,7 @@ export class StudentService {
   getStudent(): Observable<SearchStudent>{
     return this.http.get<SearchStudent>(`${this.apiUrl}/student`).pipe(
       tap( student => this.cacheStore.student = student.data ),
-      delay(1000)
+      delay(200)
     );
   }
 
@@ -93,13 +95,17 @@ export class StudentService {
 
   // Method Post Agregar un student
   addStudent(student: StudentForm): Observable<StudentForm>{
-    return this.http.post<StudentForm>(`${this.apiUrl}/student`, student);
+    return this.http.post<StudentForm>(`${this.apiUrl}/student`, student).pipe(
+      tap(() => this.createUpdate = true)
+    );
   }
 
   // Method Update Actualizar un student
   updateStudent(student: StudentForm): Observable<StudentForm>{
     if (!student.id) throw Error("Student id is required");
-    return this.http.patch<StudentForm>(`${this.apiUrl}/student/${student.id}`, student);
+    return this.http.patch<StudentForm>(`${this.apiUrl}/student/${student.id}`, student).pipe(
+      tap(() => this.createUpdate = true)
+    );
   }
 
   // Eliminar un Estudiante

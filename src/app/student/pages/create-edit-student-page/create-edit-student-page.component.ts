@@ -228,7 +228,7 @@ export class CreateEditStudentPageComponent implements OnInit{
       switchMap(({id}) => this.studentService.getStudentById(id))
     ).subscribe(
       data => {
-        console.log(data?.data);
+        // console.log(data?.data);
         if(!data?.data) return this.router.navigateByUrl('/')
         this.studentForm.reset(data?.data)
         return
@@ -264,6 +264,7 @@ export class CreateEditStudentPageComponent implements OnInit{
     }
 
     this.studentService.addStudent(this.currentStudent).subscribe(student => {
+      this.router.navigate(['/students/list'])
       this.showSnackbar(`${this.currentStudent.names} fue Creado Exitosamente!`)
     })
 

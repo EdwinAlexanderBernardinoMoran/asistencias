@@ -8,7 +8,7 @@
 
   <mat-tab-group>
 
-    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="studentForm">
 
     <!-- Toolbar-one -->
     <mat-tab label="Identificacion Del Estudiante">
@@ -911,7 +911,7 @@
 
       <div class="flex">
         <div class="flex-1 h-7rem bg-primary font-bold text-center border-round mx-8">
-          <button mat-raised-button>
+          <button mat-raised-button (click)="onSubmit()">
             <mat-icon matSuffix>send</mat-icon>
             Enviar Datos
           </button>
