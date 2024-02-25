@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: () => import('./career/career.module').then(m => m.CareerModule)
   },
   {
+    path: 'categories',
+    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'
