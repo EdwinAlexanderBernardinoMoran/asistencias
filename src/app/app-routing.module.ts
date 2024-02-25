@@ -43,6 +43,10 @@ const routes: Routes = [
     loadChildren: () => import('./school-center/school-center.module').then(m => m.SchoolCenterModule)
   },
   {
+    path: 'careers',
+    loadChildren: () => import('./career/career.module').then(m => m.CareerModule)
+  },
+  {
     path: '',
     redirectTo: 'students',
     pathMatch: 'full'
