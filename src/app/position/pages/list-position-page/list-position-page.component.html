@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <h1 align="center">{{ title }}</h1>
+  </div>
+
+  <button mat-raised-button color="primary" class="mb-4" [routerLink]="['/positions/new-position']">Agregar Cargo +</button>
+
+  <table-generic [data]="position" [navegacion]="urlPosition" (onDelete)="onDelete($event)"></table-generic>
+
+  <shared-loader *ngIf="isLoading"></shared-loader>
+</div>

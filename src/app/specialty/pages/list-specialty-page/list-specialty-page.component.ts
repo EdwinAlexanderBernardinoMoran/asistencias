@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+
 import { Information } from 'src/app/shared/components/intefaces/Information.interface';
 import { SpecialtyService } from '../../services/specialty.service';
 import { SearchSpecialty, Specialty } from '../../interfaces/specialty.interface';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
   styles: [
   ]
 })
-export class ListSpecialtyPageComponent {
+export class ListSpecialtyPageComponent implements OnInit {
   public title: string = 'Listado De Especialidades';
   public urlSpecialty: string = '/specialties/edit';
   public specialty: MatTableDataSource<Information>;
